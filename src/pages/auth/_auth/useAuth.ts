@@ -1,7 +1,7 @@
 import { ChangeEvent, MutableRefObject, useRef, useState } from "react";
 
 export default function useAuth(initialFormData: Record<string, string>) {
-  const passwordRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
+  const passwordRef = useRef<HTMLInputElement | null>(null);
   const [formData, setFormData] = useState(initialFormData);
   const [showPassword, setShowPassword] = useState(false);
   //
@@ -13,8 +13,9 @@ export default function useAuth(initialFormData: Record<string, string>) {
   }
 
   function togglePassword() {
-    // let { type } = passwordRef.current;
-    passwordRef.current.type = '' === "password" ? "text" : "password";
+    let { type } = passwordRef.current as HTMLInputElement;
+    if (passwordRef.current && passwordRef.current.type)
+      passwordRef.current.type = type === "password" ? "text" : "password";
     setShowPassword((prev) => !prev);
   }
   //
