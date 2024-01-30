@@ -3,6 +3,8 @@ import { Helmet } from "react-helmet";
 //
 import APP from "constants/APP";
 import { __ } from "@/utils";
+// const { __ } = require("@/utils");
+
 
 const Head = ({ title = "Log in" }: { title?: string }) => {
   return (
