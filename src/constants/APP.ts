@@ -4,7 +4,7 @@ export default Object.freeze({
   name: "CRESPO",
   slug: "crespo",
   title: "% | CRESPO&trade;",
-  description: "Enterprise Mobile Application Software",
+  description: "Enterprise Mobile App - Corel Ministry Int'l",
   // https://hexcolorpedia.com/color/?q=7a296c
   color: {
     // Byzantium
