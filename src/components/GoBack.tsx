@@ -6,12 +6,8 @@ const GoBack = ({ to }: { to?: string }) => {
   const navigate = useNavigate();
   //
   return (
-    <button
-      onClick={() => (to ? navigate(to) : navigate(-1))}
-      className="absolute top-4 left-4 flex items-center gap-1"
-    >
-      <BackIcon className="text-[22px]" />
-      Back
+    <button onClick={() => (to ? navigate(to) : navigate(-1))}>
+      <BackIcon size="1.2em" />
     </button>
   );
 };
