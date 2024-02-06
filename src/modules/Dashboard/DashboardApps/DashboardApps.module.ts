@@ -1,30 +1,27 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import APP from "@/constants/APP";
 
 export const styles = {};
 
 export default {
-  Container: styled.nav`
-    figure {
-      border: 1px solid #eee;
-      padding: 20px 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+  Container: styled.div`
+    div > div {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    }
+  `,
+  Link: styled(Link)`
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-      a {
-        /* border: 1px solid blue; */
-        background-color: ${APP.color.brand_tint};
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        figcaption {
-          margin-top: 5px;
-          color: #555;
-          font-size: 14px;
-        }
-      }
+    small {
+      margin-top: 5px;
+      color: #555;
+      font-size: 12px;
     }
   `,
 };

@@ -14,6 +14,7 @@ const Container = styled.button`
   border-radius: 100%;
   position: absolute;
   top: -24px;
+  left: 41%;
 `;
 
 const FAB = () => {

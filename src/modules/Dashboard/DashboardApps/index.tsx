@@ -11,8 +11,15 @@ import {
   // FcAdvertising as VendorsIcon,
   // FcShop  as VendorsIcon,
 } from "react-icons/fc";
-import { React, Link, Grid, SketchBox as Box } from "@/common/components";
+import {
+  React,
+  Link,
+  Grid,
+  SketchBox as Box,
+  Repeat,
+} from "@/common/components";
 import Badge from "@/components/Badge";
+import GridContainer, { GridItem } from "@/components/GridContainer";
 //
 import PATH from "@/constants/PATH";
 import Styled, { styles } from "./DashboardApps.module";
@@ -20,18 +27,19 @@ import Styled, { styles } from "./DashboardApps.module";
 const DashboardApps = () => {
   return (
     <Styled.Container>
-      <Grid.CenterEvenly $gap={20}>
+      <GridContainer>
         {apps.map((e, i) => (
-          <figure key={i}>
-            <Link to={e.href} className={i === 8 ? `relative` : ``}>
-              {e.icon || <Box as={[1, 32, ""]} />}
-              <figcaption>{e.text}</figcaption>
+          <GridItem key={i} flex>
+            <Styled.Link to={e.href} className={i === 8 ? `relative` : ``}>
+              {e.icon || <Box as={[1, 32, e.text]} />}
+              <small>{e.text}</small>
 
+              {/* BADGE */}
               {i === 8 && <Badge alt top={20} right={-15} />}
-            </Link>
-          </figure>
+            </Styled.Link>
+          </GridItem>
         ))}
-      </Grid.CenterEvenly>
+      </GridContainer>
     </Styled.Container>
   );
 };

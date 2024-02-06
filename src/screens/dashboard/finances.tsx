@@ -8,6 +8,7 @@ import {
   SketchBox as Box,
 } from "@/common/components";
 import Hero from "@/components/_styled/Hero.module";
+import GridContainer, { GridItem } from "@/components/GridContainer";
 //
 import PATH from "@/constants/PATH";
 import Styled, { styles } from "@/modules/Finances/Finances.module";
@@ -34,7 +35,7 @@ export default function FinancesScreen() {
           </Styled.HeroRight>
         </Hero>
 
-        <Styled.Menu>
+        <GridContainer>
           {[
             "Offering",
             "Tithe",
@@ -46,13 +47,17 @@ export default function FinancesScreen() {
             "Donations",
             "Misc",
           ].map((e, i) => (
-            <Link to={PATH.tent} key={i}>
-              <Box />
-              <b>270,000</b>
-              <small>{e}</small>
-            </Link>
+            <GridItem key={i} show flex>
+              <Link to={PATH.tent}>
+                <Box />
+                <p>
+                  <b>{i + 1},000,000</b>
+                </p>
+                <small>{e}</small>
+              </Link>
+            </GridItem>
           ))}
-        </Styled.Menu>
+        </GridContainer>
       </SafeAreaView>
     </>
   );
