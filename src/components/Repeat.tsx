@@ -3,7 +3,7 @@ import React from "react";
 
 type TRepeat = { as: React.ReactNode; n?: number };
 
-const Repeat = ({ as, n = 2 }: TRepeat) => {
+const Repeat = ({ as, n = 3 }: TRepeat) => {
   return [...Array(n)].map((_, i) => (
     <React.Fragment key={i}>{as}</React.Fragment>
   ));

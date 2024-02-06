@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .root-container {
+    @apply w-full sm:w-[480px] mx-auto border-0
+  }
+
+}

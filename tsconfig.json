@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["ES2020", "DOM", "DOM.Iterable", "ES2021.String"],
     "module": "ESNext",
     "skipLibCheck": true,
 
@@ -19,19 +19,29 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
-     "allowJs": true,
+    "allowJs": true,
 
     /* path alias */
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*", "./dist/*", ""],
+      "common/*": ["src/common/*"],
       "components/*": ["src/components/*"],
       "constants/*": ["src/constants/*"],
       "data/*": ["src/data/*"],
       "hooks/*": ["src/hooks/*"],
-      "pages/*": ["src/pages/*"],
+      "modules/*": ["src/modules/*"],
+      "navigation/*": ["src/navigation/*"],
+      "screens/*": ["src/screens/*"],
       "utils/*": ["src/utils/*"],
     },
+
+    "types": [
+      "node",
+      "react",
+      "react-dom",
+      "@types/apexcharts", // Add this line
+    ],
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
