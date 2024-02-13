@@ -11,6 +11,6 @@ export default Object.freeze({
   app_launcher: 0,
   notifications: 0,
   profile: 1,
-  capture: 1,
+  capture: 0,
   finances: 0,
 });

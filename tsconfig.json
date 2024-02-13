@@ -40,7 +40,6 @@
       "node",
       "react",
       "react-dom",
-      "@types/apexcharts", // Add this line
     ],
   },
   "include": ["src"],
