@@ -1,12 +1,11 @@
 // import APP from "@/constants/APP";
 export default Object.freeze({
-  url: "https://crespo.vercel.app",
+  url: "https://crespo-db.vercel.app",
   name: "CRESPO",
   slug: "crespo",
   title: "% | CRESPO&trade;",
-  description: "Church Mobile App - Corel Ministry Int'l",
   version: "1.1.0",
-  build: "MO20240205T000000",
+  build: "WE20240214T000000",
 
   // https://hexcolorpedia.com/color/?q=7a296c
   color: {
