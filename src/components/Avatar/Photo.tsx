@@ -7,30 +7,33 @@ type TAvatarPhoto = {
   radius?: string;
   title?: string;
   fill?: boolean;
+  outline?: boolean;
   clickable?: boolean;
 };
 
 const AvatarPhoto = ({
-  src,
+  src = `/images/avatar-flat.png`,
   size = 32,
   radius = "100%",
   title = "",
   fill = true,
+  outline = true,
   clickable = false,
 }: TAvatarPhoto) => {
   const avatarPhoto = (
     <figure
-      className="rounded-full overflow-hidden border m-0 p-0"
+      className="rounded-full overflow-hidden m-0 p-0"
       style={{
         minWidth: size,
         minHeight: size,
         maxWidth: size,
         maxHeight: size,
         borderRadius: radius,
+        border: outline ? "1px solid #eee" : "",
       }}
     >
       <img
-        src={src || `/images/avatar-flat.png`}
+        src={src}
         alt={title}
         title={title}
         className={fill ? `object-cover` : `object-contain`}

@@ -17,3 +17,5 @@ export { default as avatar_flat } from "/images/avatar-flat.png";
 export { default as etugbeh } from "/images/etugbeh.png";
 export { default as photos } from "/images/photos.png";
 export { default as photos_wide } from "/images/photos-wide.png";
+export { default as logo_facebook } from "/images/logo-facebook.png";
+export { default as logo_google } from "/images/logo-google.png";

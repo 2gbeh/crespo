@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 _exclude
+
+# Contentlayer
+.contentlayer

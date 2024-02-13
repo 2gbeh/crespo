@@ -1,8 +1,3 @@
-// import { Flex, Head, SketchBox as Box, Repeat as Rx  } from "@/components";
-
-// INTERNAL
-export { default as React, Fragment } from "react";
-
 // VENDOR
 export { Link, NavLink } from "react-router-dom";
 
@@ -11,6 +6,7 @@ export { Link, NavLink } from "react-router-dom";
 // STYLED
 export * as Flex from "@/components/_styled/Flex.module";
 export * as Grid from "@/components/_styled/Grid.module";
+export { default as Border } from "@/components/_styled/Border.module";
 export { default as SafeAreaView } from "@/components/_styled/SafeAreaView.module";
 
 // CUSTOM

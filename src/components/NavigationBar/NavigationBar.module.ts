@@ -15,6 +15,7 @@ export default {
     border-top: 1px solid #eee;
     position: fixed;
     bottom: 0;
+    z-index: 7;
 
 
     figure {

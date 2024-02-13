@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   FcComboChart as FinancesIcon,
   FcBusinessman as PastorsIcon,
@@ -12,7 +13,6 @@ import {
   // FcShop  as VendorsIcon,
 } from "react-icons/fc";
 import {
-  React,
   Link,
   Grid,
   SketchBox as Box,
@@ -89,8 +89,24 @@ const apps = [
   },
   {
     href: PATH.tent,
-    // text: <>Olympian&trade;</>,
-    text: "Exo 35:10",
+    // text: "Exo 35:10",
+    text: "#Connect",
     icon: <VendorsIcon size="2em" />,
   },
+  // {
+  //   href: PATH.tent,
+  //   text: "Birthdays",
+  //   icon: <BirthdaysIcon size="2em" />,
+  // },
+  // {
+  //   href: PATH.tent,
+  //   text: "Weddings",
+  //   icon: <WeddingsIcon size="2em" />,
+  // },
+  // {
+  //   href: PATH.tent,
+  //   // text: "Exo 35:10",
+  //   text: "#Connect",
+  //   icon: <VendorsIcon size="2em" />,
+  // },
 ];

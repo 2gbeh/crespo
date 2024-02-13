@@ -4,11 +4,13 @@ export default Object.freeze({
   tent: "/tent",
   //
   login: "/",
-  register: "register",
+  register: "/register",
   verify_email: "/verify-email",
   forgot_password: "/forgot-password",
   reset_password: "/reset-password",
   dashboard: "/dashboard",
+  notifications: "/dashboard/notifications",
+  profile: "/dashboard/profile",
+  profile_edit: "/dashboard/profile/edit",
   finances: "/dashboard/finances",
-  account: "/dashboard/account",
 });

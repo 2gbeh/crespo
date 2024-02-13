@@ -1,3 +1,5 @@
+import React from 'react'
+
 import {
   GoHome as HomeIcon,
   GoHomeFill as HomeFillIcon,
@@ -8,8 +10,11 @@ import {
   GoPerson as UserIcon,
   GoPersonFill as UserFillIcon,
   GoPlusCircle as FabIcon,
+  
 } from "react-icons/go";
-import { React, NavLink, Flex, SketchBox as Box } from "@/common/components";
+import { CiBullhorn } from "react-icons/ci";
+
+import { NavLink, Flex, SketchBox as Box } from "@/common/components";
 import FAB from "@/components/FAB";
 import usePathway from "@/hooks/usePathway";
 //
@@ -55,7 +60,7 @@ const navigationMenu = [
     href: PATH.tent,
     text: "Events",
     icon: {
-      outline: <StarIcon {...styles.icon} />,
+      outline: <CiBullhorn {...styles.icon} />,
       solid: <StarFillIcon {...styles.icon} />,
     },
   },
@@ -76,7 +81,7 @@ const navigationMenu = [
     },
   },
   {
-    href: PATH.account,
+    href: PATH.profile,
     text: "Profile",
     icon: {
       outline: <UserIcon {...styles.icon} />,

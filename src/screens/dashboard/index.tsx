@@ -1,3 +1,4 @@
+import React from 'react'
 import { FcDoughnutChart } from "react-icons/fc";
 import {
   Link,
@@ -18,10 +19,8 @@ import DashboardApps from "@/modules/Dashboard/DashboardApps";
 export default function DashboardScreen() {
   return (
     <>
-      <Head title="Dashboard" />
-
       {/* HEADER */}
-      <AppBar />
+      <AppBar title="Dashboard" />
 
       {/* MAIN */}
       <SafeAreaView $offwhite>

@@ -8,10 +8,23 @@ type TDimension = number | Array<string | number>;
 type TSketchBox = {
   as?: readonly [TSource, TDimension, string];
   alt?: string;
+  size?: number;
 };
 
-const getSource = (n: TSource): string =>
-  `/images/box-${["dark", "light"][n]}.png`;
+const SketchBox = ({ as = [1, 32, "Icon"], alt, size }: TSketchBox) => {
+  return (
+    <img
+      src={getSource(as[0])}
+      style={getDimension(size || as[1])}
+      title={alt || as[2]}
+      alt={alt}
+    />
+  );
+};
+
+export default SketchBox;
+
+const getSource = (n: TSource): string => `/images/box${["-dark", ""][n]}.png`;
 
 const getDimension = (x: TDimension): Record<string, string | number> =>
   Array.isArray(x)
@@ -27,16 +40,3 @@ const getDimension = (x: TDimension): Record<string, string | number> =>
         minHeight: x,
         maxHeight: x,
       };
-
-const SketchBox = ({ as = [1, 32, "Icon"], alt = "X" }: TSketchBox) => {
-  return (
-    <img
-      src={getSource(as[0])}
-      style={getDimension(as[1])}
-      title={as[2]}
-      alt={alt}
-    />
-  );
-};
-
-export default SketchBox;

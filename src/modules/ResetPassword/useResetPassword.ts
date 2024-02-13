@@ -1,27 +1,30 @@
 import { FormEvent, useState } from "react";
-import { zzz } from "@/utils";
-// const { zzz } = require("@/utils");
+import { useNavigate } from "react-router-dom";
 //
+import PATH from "constants/PATH";
 import M from "constants/MOCK";
+import { zzz } from "@/utils";
 
 export const initialFormData = M.auth
   ? {
-      username: "webmaster",
       password: "_Thatcrespob0y",
+      confirm_password: "_Thatcrespob0y",
     }
   : {
-      username: "",
       password: "",
+      confirm_password: "",
     };
 
-export default function useLogin(formData: Record<string, string>) {
+export default function useResetPassword(formData: Record<string, string>) {
+  const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
   //
   async function handleSubmit(ev: FormEvent) {
     ev.preventDefault();
     setSubmitting(true);
-    console.log("🚀 ~ useLogin ~ formData:", formData);
+    console.log("🚀 ~ useResetPassword ~ formData:", formData);
     await zzz();
+    navigate(PATH.login);
     setSubmitting(false);
   }
   //
@@ -30,4 +33,3 @@ export default function useLogin(formData: Record<string, string>) {
     submitting,
   };
 }
-

@@ -6,7 +6,7 @@ import { Link, Head, ActivityIndicator } from "@/common/components";
 import PATH from "constants/PATH";
 import Styled from "@/modules/Auth/Auth.module";
 import useAuth from "@/modules/Auth/useAuth";
-import useLogin, { initialFormData } from "@/modules/Auth/Login/useLogin";
+import useLogin, { initialFormData } from "@/modules/Login/useLogin";
 
 export default function LoginScreen() {
   const {
@@ -24,7 +24,7 @@ export default function LoginScreen() {
 
       {/* CONTENT */}
       <Styled.Container>
-        <h1>Login</h1>
+        <h1>Welcome back</h1>
         <form onSubmit={handleSubmit} autoComplete="on">
           <fieldset disabled={submitting}>
             {/* USERNAME */}
@@ -58,6 +58,7 @@ export default function LoginScreen() {
               <i onClick={togglePassword}>
                 {showPassword ? <EyeCrossIcon /> : <EyeIcon />}
               </i>
+              <Link to={PATH.forgot_password}>Forgot Password?</Link>
             </div>
 
             {/* BUTTON */}
@@ -73,8 +74,22 @@ export default function LoginScreen() {
 
         {/* NAV */}
         <nav>
-          <Link to={PATH.forgot_password}>Forgot Password?</Link>
+          Don't have an account?
+          <Link to={PATH.register}>Register</Link>
         </nav>
+
+        {/* OAUTH */}
+        <figure>
+          <figcaption>OR</figcaption>
+          <div>
+            <img src="/images/logo-google.png" alt="Google" title="Google" />
+            <img
+              src="/images/logo-facebook.png"
+              alt="Facebook"
+              title="Facebook"
+            />
+          </div>
+        </figure>
       </Styled.Container>
     </>
   );
