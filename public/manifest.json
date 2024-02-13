@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "CRESPO",
+  "short_name": "CRESPO",
+  "description": "Internal Database Web App",
+  "categories": [
+    "crespo",
+    "crespo db",
+    "crespo app",
+    "jubilee chapel",
+    "corel ministry",
+    "tony tobore",
+    "hwp labs",
+    "emmanuel tugbeh"
+  ],
+  "background_color": "#e11",
+  "theme_color": "#7a296c",
+  "start_url": "index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "dir": "rtl",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/msapplication-tile-image.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/mask-icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "683x683"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Data Capture",
+      "short_name": "Capture",
+      "description": "Capture bio-data or finances",
+      "url": "/dashboard/capture",
+      "icons": [
+        {
+          "src": "/images/ico-capture.png",
+          "sizes": "512x512"
+        }
+      ]
+    },
+    {
+      "name": "Church Members",
+      "short_name": "Members",
+      "description": "View church members",
+      "url": "/dashboard/members",
+      "icons": [
+        {
+          "src": "/images/ico-members.png",
+          "sizes": "512x512"
+        }
+      ]
+    },
+    {
+      "name": "Church Finances",
+      "short_name": "Finances",
+      "description": "View church finances",
+      "url": "/dashboard/finances",
+      "icons": [
+        {
+          "src": "/images/ico-finances.png",
+          "sizes": "512x512"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/ui-splash.png",
+      "type": "image/png",
+      "sizes": "356x634",
+      "label": "Welcome"
+    },
+    {
+      "src": "/images/ui-login.png",
+      "type": "image/png",
+      "sizes": "356x634",
+      "label": "Login"
+    },
+    {
+      "src": "/images/ui-dashboard.png",
+      "type": "image/png",
+      "sizes": "356x634",
+      "label": "Home"
+    }
+  ]
+}

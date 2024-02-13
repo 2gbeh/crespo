@@ -2,13 +2,12 @@ import { FiUser as UserIcon } from "react-icons/fi";
 import { FaRegEyeSlash as EyeCrossIcon } from "react-icons/fa6";
 import { FiEye as EyeIcon } from "react-icons/fi";
 import { Link, Head, ActivityIndicator } from "@/common/components";
+import OAuth from "@/components/OAuth";
 //
 import PATH from "constants/PATH";
 import Styled from "@/modules/Auth/Auth.module";
 import useAuth from "@/modules/Auth/useAuth";
-import useRegister, {
-  initialFormData,
-} from "@/modules/Register/useRegister";
+import useRegister, { initialFormData } from "@/modules/Register/useRegister";
 
 export default function RegisterScreen() {
   const {
@@ -117,17 +116,7 @@ export default function RegisterScreen() {
         </nav>
 
         {/* OAUTH */}
-        <figure>
-          <figcaption>OR</figcaption>
-          <div>
-            <img src="/images/logo-google.png" alt="Google" title="Google" />
-            <img
-              src="/images/logo-facebook.png"
-              alt="Facebook"
-              title="Facebook"
-            />
-          </div>
-        </figure>
+        <OAuth />
       </Styled.Container>
     </>
   );

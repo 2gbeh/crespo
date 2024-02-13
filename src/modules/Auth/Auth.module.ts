@@ -94,34 +94,5 @@ export default {
       }
     }
 
-    figure {
-      margin-top: 30px;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-
-      figcaption {
-        background-color: #fff;
-        color: #555;
-        padding: 0 10px;
-        font-size: 14px;
-        z-index: 1;
-      }
-
-      div {
-        border-top: 2px solid #ddd;
-        margin-top: -10px;
-        padding: 30px 0;
-        width: 160px;
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-
-        img {
-          width: 24px;
-          display: inline-block;
-        }
-      }
-    }
   `,
 };

@@ -2,14 +2,91 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Internal database web app for Jubilee Chapel HQ, Corel Ministry Int'l Inc." />
+  <meta name="keywords" content="crespo,crespo db,crespo app,jubilee chapel,corel ministry,tony tobore,hwp labs,emmanuel tugbeh" />
+  <meta name="robots" content="index,follow" />
+  <meta name="owner" content="HWP Labs" />
+  <meta name="designer" content="Tugbeh Emmanuel" />
+  <meta name="copyright" content="2017" />
+  <meta name="theme-color" content="#7a296c" />
+  <meta name="msapplication-TileColor" content="#7a296c" />
+  <meta name="msapplication-TileImage" content="/msapplication-tile-image.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="#7a296c" />
+  <meta name="apple-mobile-web-app-title" content="CRESPO" />
+  <meta name="MSSmartTagsPreventParsing" content="true" />
+  <meta name="google-site-verification" content="BkiSyfDS_inKsIjIyqLFf9qsP65vhku4-dfqd8GewPc" />
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:site_name" content="CRESPO" />
+  <meta property="og:title" content="Internal Database Web App" />
+  <meta property="og:url" content="https://crespo-db.vercel.app" />
+  <meta property="og:description" content="Download now on Google Play" />
+  <meta property="og:image" content="https://crespo-db.vercel.app/social-preview.png" />
+  <meta property="og:image:alt" content="HWP Labs' mobile-first internal database web app" />
+  <meta property="og:image:width" content="640" />
+  <meta property="og:image:height" content="320" />
+  <meta property="og:determiner" content="auto" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="en_GB" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:type" content="website" />
+  <meta property="article:author" content="https://facebook.com/2gbeh" />
+  <meta property="article:publisher" content="https://facebook.com/hwplabs/" />
+  <meta property="article:published_time" content="2024-02-14T00:00:00+00:00" />
+  <meta property="article:modified_time" content="2025-01-14T00:00:00+00:00" />
+  <meta property="fb:pages" content="226471310827018" />
+  <meta property="fb:app_id" content="654523715740509" />
+  
+  <!-- TWITTER CARD -->
+  <meta name="twitter:card" content="app" />
+  <meta name="twitter:title" content="Internal Database Web App" />
+  <meta name="twitter:url" content="https://crespo-db.vercel.app" />
+  <meta name="twitter:description" content="Download now on Google Play" />
+  <meta name="twitter:image" content="https://crespo-db.vercel.app/social-preview.png" />
+  <meta name="twitter:image:src" content="https://crespo-db.vercel.app/social-preview.png" />
+  <meta name="twitter:image:alt" content="HWP Labs' mobile-first internal database web app" />
+  <meta name="twitter:image:width" content="640" />
+  <meta name="twitter:image:height" content="320" />
+  <meta name="twitter:site" content="@hwp_labs" />
+  <meta name="twitter:creator" content="@2gbeh" />
+
+  <!-- MISC AND TITLE -->
+  <link rel="canonical" href="https://crespo-db.vercel.app/index.html" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png" />
   <title>CRESPO&trade;</title>
+
+  <!-- GOOGLE SEARCH LOGO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "url": "https://crespo-db.vercel.app",
+    "logo": "https://crespo-db.vercel.app/logo.png"
+  }
+  </script>
 </head>
 
 <body>
   <div id="root"></div>
+
+  <!-- REGISTER SERVICE WORKER -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then((reg) => console.log('Success: ', reg.scope))
+          .catch((err) => console.log('Failure: ', err));
+      })
+    }
+  </script>
+
+  <!-- APP MODULE -->
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
