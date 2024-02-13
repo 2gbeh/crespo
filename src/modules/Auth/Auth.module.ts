@@ -6,53 +6,79 @@ export const styles = {};
 export default {
   Container: styled.section`
     h1 {
+      text-align: center;
       font-size: 20px;
       font-weight: bold;
     }
 
-    form label {
-      margin-top: 20px;
-      color: #777;
-      font-size: 14px;
-      // border-bottom: 1px solid;
-      display: inline-block;
-    }
-    form input {
-      outline: none;
-      border-bottom: 1px solid #ddd;
-      padding: 0px 0 5px;
-      width: 100%;
-      display: block;
-      &:focus {
-        border-color: ${APP.color.brand};
+    form {
+      margin-top: 10px;
+      label {
+        margin-top: 20px;
+        color: #777;
+        font-size: 14px;
+        // border-bottom: 1px solid;
+        display: inline-block;
       }
-    }
-    form button {
-      background: ${APP.color.brand};
-      color: white;
-      margin-top: 32px;
-      padding: 12px 10px;
-      width: 100%;
-      font-size: 14px;
-      display: block;
-      &:hover {
-        background: ${APP.color.brand_dark};
+      input {
+        outline: none;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        padding: 0px 0 5px;
+        width: 100%;
+        display: block;
+        &:focus {
+          border-color: ${APP.color.brand};
+        }
       }
-      &:disabled {
-        background: ${APP.color.brand_shade};
+      button {
+        background: ${APP.color.brand};
+        color: white;
+        border-radius: 2px;
+        margin-top: 20px;
+        padding: 12px 10px;
+        width: 100%;
+        font-size: 14px;
+        display: block;
+        &:hover {
+          background: ${APP.color.brand_dark};
+        }
+        &:disabled {
+          background: ${APP.color.brand_shade};
+        }
       }
-    }
-    form em {
-      color: ${APP.color.blue};
-      margin-top: 2px;
-      font-size: 12px;
-      font-style: normal;
-    }
-    form i {
-      position: absolute;
-      top: 5px;
-      right: 1px;
-      color: #999;
+      em {
+        color: ${APP.color.my_blue};
+        margin-top: 2px;
+        font-size: 12px;
+        font-style: normal;
+      }
+      i {
+        position: absolute;
+        top: 5px;
+        right: 1px;
+        color: #999;
+      }
+      a {
+        color: ${APP.color.brand};
+        margin-top: 10px;
+        font-size: 14px;
+        display: flex;
+        justify-content: end;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      article {
+        font-size: 14px;
+        margin: 10px 0;
+        b {
+          color: blue;
+          font-weight: 600;
+          display: inline-block;
+        }
+      }
     }
 
     nav {
@@ -60,9 +86,40 @@ export default {
       text-align: center;
       font-size: 14px;
       a {
-        color: #777;
+        color: ${APP.color.brand};
+        margin-left: 5px;
         &:hover {
           text-decoration: underline;
+        }
+      }
+    }
+
+    figure {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      figcaption {
+        background-color: #fff;
+        color: #555;
+        padding: 0 10px;
+        font-size: 14px;
+        z-index: 1;
+      }
+
+      div {
+        border-top: 2px solid #ddd;
+        margin-top: -10px;
+        padding: 30px 0;
+        width: 160px;
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+
+        img {
+          width: 24px;
+          display: inline-block;
         }
       }
     }

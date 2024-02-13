@@ -1,29 +1,29 @@
 import { FaRegEnvelope as EmailIcon } from "react-icons/fa6";
-import { Link, Head } from "@/common/components";
-import GoBack from "@/components/GoBack";
+import { Link, Head, ActivityIndicator } from "@/common/components";
 //
 import PATH from "constants/PATH";
 import Styled from "@/modules/Auth/Auth.module";
 import useAuth from "@/modules/Auth/useAuth";
 import useForgotPassword, {
   initialFormData,
-} from "@/modules/Auth/ForgotPassword/useForgotPassword";
+} from "@/modules/ForgotPassword/useForgotPassword";
 
 export default function ForgotPasswordScreen() {
   const { formData, updateFormData } = useAuth(initialFormData);
+  const { handleSubmit, submitting } = useForgotPassword(formData);
+
   //
   return (
     <>
       <Head title="Forgot Password" />
-      <GoBack />
 
       {/* CONTENT */}
       <Styled.Container>
         <h1>Forgot Password</h1>
 
         {/* FORM */}
-        <form autoComplete="on">
-          <fieldset disabled={false}>
+        <form onSubmit={handleSubmit} autoComplete="on">
+          <fieldset disabled={submitting}>
             <label htmlFor="email">Email</label>
             <div className="relative">
               <input
@@ -44,13 +44,20 @@ export default function ForgotPasswordScreen() {
             </div>
 
             {/* BUTTON */}
-            <button>Send</button>
+            <button>
+              {" "}
+              {submitting ? (
+                <ActivityIndicator size={16} text={"Please wait..."} />
+              ) : (
+                "Send"
+              )}
+            </button>
           </fieldset>
         </form>
 
         {/* NAV */}
         <nav>
-          <Link to={PATH.reset_password}>Log in</Link>
+          <Link to={PATH.login}>Log in</Link>
         </nav>
       </Styled.Container>
     </>

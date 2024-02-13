@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import APP from "@/constants/APP";
 
-export const styles = {};
+export const styles = {
+  icon: {
+    color: APP.color.accent,
+    size: "1.5em",
+  },
+};
 
 export default {
   Container: styled.header`
@@ -16,6 +21,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     position: fixed;
+    z-index: 7;
   `,
   ContentLeft: styled.div`
     figure {
@@ -34,7 +40,7 @@ export default {
       }
     }
   `,
-  ContentRight: styled.div`
+  ContentRight: styled.button`
     position: relative;
     margin-top: 8px;
   `,

@@ -46,9 +46,7 @@ export const End = styled(withConfig)`
   justify-content: flex-end;
 `;
 
-export const Between = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+export const Between = styled(withConfig)`
   justify-content: space-between;
 `;
 

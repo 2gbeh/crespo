@@ -10,7 +10,13 @@ const GridContainer = ({
 }) => {
   return (
     <div
-      className={`mt-5 mx-5 grid grid-cols-${cols} gap-5 place-items-center`}
+      className={clsx(
+        cols === 1 && `grid-cols-1`,
+        cols === 2 && `grid-cols-2`,
+        cols === 3 && `grid-cols-3`,
+        cols === 4 && `grid-cols-4`,
+        "mt-5 mx-5 grid gap-5 place-items-center"
+      )}
     >
       {children}
     </div>
