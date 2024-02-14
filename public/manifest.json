@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "name": "CRESPO",
   "short_name": "CRESPO",
-  "description": "Internal Database Web App",
+  "description": "Internal database web app for Jubilee Chapel HQ, Corel Ministry Int'l Inc.",
   "categories": [
     "crespo",
     "crespo db",
@@ -13,9 +13,9 @@
     "hwp labs",
     "emmanuel tugbeh"
   ],
-  "background_color": "#e11",
+  "background_color": "#ffffff",
   "theme_color": "#7a296c",
-  "start_url": "index.html",
+  "start_url": ".",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
