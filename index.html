@@ -81,11 +81,13 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./service-worker.js')
-          .then((reg) => console.log('Success: ', reg.scope))
-          .catch((err) => console.log('Failure: ', err));
+          .then((reg) => console.log("🚀 ~ serviceWorker:", reg.scope))
+          .catch((err) => console.log("🚀 ~ serviceWorker:", err));
       })
     }
   </script>
+
+      
 
   <!-- APP MODULE -->
   <script type="module" src="/src/main.tsx"></script>

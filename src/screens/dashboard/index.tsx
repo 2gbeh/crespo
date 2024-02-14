@@ -29,7 +29,7 @@ export default function DashboardScreen() {
           <Styled.HeroLeft>
             <h1>1,509 new members</h1>
             <h2>in the past 30 days</h2>
-            <Link to={PATH.tent}>View all</Link>
+            <Link to={PATH.splash}>View all</Link>
           </Styled.HeroLeft>
           <Styled.HeroRight>
             <FcDoughnutChart size={"5em"} />

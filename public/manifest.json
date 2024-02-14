@@ -23,6 +23,11 @@
   "lang": "en-US",
   "icons": [
     {
+      "src": "/logo.png",
+      "type": "image/png",
+      "sizes": "160x160"
+    },
+    {
       "src": "/apple-touch-icon.png",
       "type": "image/png",
       "sizes": "192x192"
