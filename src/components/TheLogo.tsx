@@ -19,14 +19,14 @@ const TheLogo = ({ size = 80, to, center }: TTheLogo) => {
   );
   //
   return center ? (
-    <figure
+    <div
       style={{
         display: "flex",
         justifyContent: "center",
       }}
     >
       {Image}
-    </figure>
+    </div>
   ) : (
     Image
   );
