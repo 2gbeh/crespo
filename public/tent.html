@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7a296c" />
+  <link rel="icon" type="image/x-icon" href="./favicon.ico" sizes="32x32" />
+  <title>Offline Mode | CRESPO&trade;</title>
+  <style type="text/css">
+    body {
+      padding: 0;
+      margin: 0;
+      background-color: #7a296c;
+      color: #fff;
+    }
+
+    main {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    section {
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-transition: background-color .2s;
+      transition: background-color .2s;
+    }
+
+    section.i {
+      min-width: 170px;
+      min-height: 170px;
+      max-width: 170px;
+      max-height: 170px;
+    }
+
+    section.ii {
+      min-width: 140px;
+      min-height: 140px;
+      max-width: 140px;
+      max-height: 140px;
+    }
+
+    section.iii {
+      min-width: 110px;
+      min-height: 110px;
+      max-width: 110px;
+      max-height: 110px;
+    }
+
+    section.i.active {
+
+      background-color: #873e7b;
+    }
+
+    section.ii.active {
+      background-color: #955489;
+    }
+
+    section.iii.active {
+      background-color: #a26998;
+    }
+
+    figure {
+      border: 2px solid #6e2561;
+      border-radius: 100%;
+      min-width: 80px;
+      max-width: 80px;
+      min-height: 80px;
+      max-height: 80px;
+      overflow: hidden;
+    }
+
+    figure img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section class="i">
+      <section class="ii">
+        <section class="iii">
+          <figure>
+            <img src="./icon.png" alt="CRESPO" title="CRESPO" data-navigate="/" />
+          </figure>
+        </section>
+      </section>
+    </section>
+  </main>
+  <script type="text/javascript">
+    const k = 2;
+    let i = k;
+    setInterval(() => {
+      var dots = document.querySelectorAll('section');
+      if (i > -1) {
+        dots[i].classList.add('class', 'active');
+        i--;
+      } else {
+        i = k;
+        for (var j = 0; j <= k; j++)
+          dots[j].classList.remove('class', 'active');
+      }
+    }, 1000);
+  </script>
+</body>
+
+</html>
