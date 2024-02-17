@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import APP from "@/constants/APP";
+import COLOR from "@/constants/COLOR";
 
 export const styles = {};
 
@@ -26,14 +26,14 @@ export default {
       align-items: center;
       gap: 5px;
       p {
-        color: ${APP.color.my_blue};
+        color: ${COLOR.my_blue};
         color: #888;
         font-size: 14px;
       }
     }
 
     a {
-      background-color: ${APP.color.brand};
+      background-color: ${COLOR.brand};
       color: white;
       border-radius: 20px;
       margin-top: 15px;
@@ -44,7 +44,7 @@ export default {
       gap: 5px;
 
       &:hover {
-        background-color: ${APP.color.brand_dark};
+        background-color: ${COLOR.brand_dark};
       }
     }
   `,

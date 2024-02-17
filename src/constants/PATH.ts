@@ -11,6 +11,9 @@ export default Object.freeze({
   dashboard: "/dashboard",
   notifications: "/dashboard/notifications",
   profile: "/dashboard/profile",
+  members: "/dashboard/members",
+  members_create: "/dashboard/members/create",
+  //
   profile_edit: "/dashboard/profile/edit",
   finances: "/dashboard/finances",
 });

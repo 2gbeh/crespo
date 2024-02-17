@@ -58,7 +58,7 @@ const apps = [
     icon: <WorkersIcon size="2em" />,
   },
   {
-    href: PATH.tent,
+    href: PATH.members,
     text: "Members",
     icon: <MembersIcon size="2em" />,
   },

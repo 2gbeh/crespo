@@ -1,8 +1,6 @@
 import styled from "styled-components";
-import APP from "@/constants/APP";
+import COLOR from "@/constants/COLOR";
 
 export const styles = {};
 
-export default {
-
-};
+export default {};

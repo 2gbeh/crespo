@@ -1,7 +1,7 @@
 import React from "react";
 import { MdStars } from "react-icons/md";
 //
-import APP from "@/constants/APP";
+import COLOR from "@/constants/COLOR";
 
 type TVerified = {
   top?: number;
@@ -24,7 +24,7 @@ const Verified = ({ top, bottom, left, right }: TVerified) => {
       }}
       title="Worker"
     >
-      <MdStars color={APP.color.brand} size={"1.5em"} />
+      <MdStars color={COLOR.brand} size={"1.5em"} />
     </div>
   );
 };

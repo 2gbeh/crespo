@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import APP from "@/constants/APP";
+import COLOR from "@/constants/COLOR";
 
 export const styles = {
   icon: {
-    color: APP.color.accent,
+    color: COLOR.accent,
     size: "1.5em",
   },
 };

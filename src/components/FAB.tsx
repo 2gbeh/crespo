@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { FaCirclePlus as FabIcon } from "react-icons/fa6";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import Dialog from "./Dialog";
+import DialogAlert from "./Dialog/Alert";
 //
-import APP from "@/constants/APP";
+import COLOR from "@/constants/COLOR";
 import PATH from "@/constants/PATH";
 import M from "@/constants/MOCK";
 
@@ -27,15 +27,16 @@ const FAB = () => {
     <>
       <Container
         type="button"
-        onClick={() => setShowDialog(true)}
+        // onClick={() => setShowDialog(true)}
+        onClick={() => navigate(PATH.members_create)}
         aria-label="Capture"
       >
-        <BsPlusCircleFill size={"3em"} color={APP.color.accent} />
+        <BsPlusCircleFill size={"3em"} color={COLOR.accent} />
       </Container>
 
       {/* DIALOG */}
       {showDialog && (
-        <Dialog
+        <DialogAlert
           show={showDialog}
           onClose={() => setShowDialog(false)}
           onContinue={() => navigate(PATH.login)}

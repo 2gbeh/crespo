@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import APP from "@/constants/APP";
+import COLOR from "@/constants/COLOR";
 
 export const styles = {};
 
@@ -8,7 +8,7 @@ export default styled.section<{
   $gap?: number;
   $centered?: boolean;
 }>`
-  background-color: ${(props) => props.$color || APP.color.brand};
+  background-color: ${(props) => props.$color || COLOR.brand};
   color: white;
   border-radius: 18px;
   margin: 20px 18px 10px;
