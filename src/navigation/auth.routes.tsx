@@ -1,4 +1,5 @@
-import { AuthLayout, AuthError } from "@/modules/Auth";
+import AuthLayout from "@/modules/Auth/AuthLayout";
+import AuthError from "@/modules/Auth/AuthError";
 import LoginScreen from "@/screens/login";
 import RegisterScreen from "@/screens/register";
 import ForgotPasswordScreen from "@/screens/forgot-password";
@@ -12,6 +13,10 @@ export default {
   children: [
     {
       index: true,
+      element: <LoginScreen />,
+    },
+    {
+      path: "login",
       element: <LoginScreen />,
     },
     {

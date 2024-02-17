@@ -1,16 +1,16 @@
 import styled from "styled-components";
-import APP from "@/constants/APP";
+import COLOR from "@/constants/COLOR";
 
 export const styles = {
   icon: {
-    color: APP.color.accent,
+    color: COLOR.accent,
     size: "1.5em",
   },
 };
 
 export default {
   Hero: styled.section`
-    background-color: ${APP.color.brand};
+    background-color: ${COLOR.brand};
     color: #fff;
     padding: 30px;
     padding-bottom: 15px;
@@ -28,7 +28,7 @@ export default {
       gap: 8px;
 
       span {
-        color: ${APP.color.brand_tint} !important;
+        color: ${COLOR.brand_tint} !important;
         color: #888;
         font-size: 14px;
       }
@@ -49,8 +49,8 @@ export default {
 
       &:hover,
       &.active {
-        background-color: ${APP.color.brand_tint};
-        color: ${APP.color.brand};
+        background-color: ${COLOR.brand_tint};
+        color: ${COLOR.brand};
       }
       &.active {
         font-weight: 600;
@@ -68,15 +68,15 @@ export default {
         justify-content: center;
       }
       i {
-        background-color: ${APP.color.danger_bg};
-        color: ${APP.color.danger_fg};
+        background-color: ${COLOR.danger_bg};
+        color: ${COLOR.danger_fg};
         border-radius: 100%;
         width: 20px;
         height: 20px;
       }
       em {
-        background-color: ${APP.color.success_bg};
-        color: ${APP.color.success_fg};
+        background-color: ${COLOR.success_bg};
+        color: ${COLOR.success_fg};
         border-radius: 3px;
         padding: 3px 8px;
       }
@@ -88,7 +88,6 @@ export default {
     font-size: 15px;
     font-weight: 600;
 
-
     button {
       display: flex;
       align-items: center;
@@ -96,9 +95,8 @@ export default {
     }
 
     small {
-      color: ${APP.color.brand};
-    font-size: 14px;
-
+      color: ${COLOR.brand};
+      font-size: 14px;
     }
   `,
 };

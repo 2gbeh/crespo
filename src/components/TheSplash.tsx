@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Border from "@/components/_styled/Border.module";
 import TheLogo from "@/components/TheLogo";
-import APP from "@/constants/APP";
+import COLOR from "@/constants/COLOR";
 
 const Splash = () => {
   return (
@@ -27,7 +27,7 @@ export default React.memo(Splash);
 
 const Styled = {
   Conatiner: styled.div`
-    background-color: ${APP.color.brand};
+    background-color: ${COLOR.brand};
     color: white;
     width: 100%;
     height: 100vh;
@@ -51,4 +51,3 @@ const Styled = {
     }
   `,
 };
-

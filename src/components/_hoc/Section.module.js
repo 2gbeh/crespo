@@ -13,7 +13,7 @@ export default styled.section`
   max-width: ${(props) => (props.$span ? props.$span + "px" : "auto")};
 
   & > h1 {
-    color: ${APP.color.brand};
+    color: ${COLOR.brand};
     margin: 0;
     padding: 0 0 20px 0;
     font-size: 14px;

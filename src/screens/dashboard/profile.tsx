@@ -19,13 +19,13 @@ import {
 import NavigationBar from "@/components/NavigationBar";
 import Bavatar from "@/components/Bavatar";
 //
-import APP from "@/constants/APP";
+import COLOR from "@/constants/COLOR";
 import PATH from "@/constants/PATH";
 import M from "@/constants/MOCK";
 import Styled, { styles } from "@/modules/Profile/Profile.module";
 import * as PROFILE from "@/modules/Profile/PROFILE";
 
-const iconProps = { size: "1.2em", color: APP.color.brand };
+const iconProps = { size: "1.2em", color: COLOR.brand };
 const ICONS = M.profile
   ? [
       <MdDateRange {...iconProps} />,

@@ -1,7 +1,14 @@
 import { FiUser as UserIcon } from "react-icons/fi";
 import { FaRegEyeSlash as EyeCrossIcon } from "react-icons/fa6";
-import { FiEye as EyeIcon } from "react-icons/fi";
-import { Link, Head, ActivityIndicator } from "@/common/components";
+import { FiEye as EyeIcon, FiLogIn } from "react-icons/fi";
+import { TbLogin2 as LoginIcon } from "react-icons/tb";
+import { Link, Flex, Head, ActivityIndicator } from "@/common/components";
+import {
+  FormFieldset,
+  FormInput,
+  FormPassword,
+  FormButton,
+} from "@/components/Form";
 import OAuth from "@/components/OAuth";
 //
 import PATH from "constants/PATH";
@@ -26,52 +33,39 @@ export default function LoginScreen() {
       {/* CONTENT */}
       <Styled.Container>
         <h1>Welcome back</h1>
-        <form onSubmit={handleSubmit} autoComplete="on">
-          <fieldset disabled={submitting}>
-            {/* USERNAME */}
-            <label htmlFor="username">Email or Phone</label>
-            <div className="relative">
-              <input
-                type="text"
-                id="username"
-                name="username"
-                defaultValue={formData.username}
-                onChange={updateFormData}
-                required
-              />
-              <i>
-                <UserIcon />
-              </i>
-            </div>
+        <FormFieldset
+          onSubmit={handleSubmit}
+          autoComplete="on"
+          disabled={submitting}
+        >
+          {/* USERNAME */}
+          <FormInput
+            label="Email or Phone"
+            type="text"
+            id="username"
+            name="username"
+            defaultValue={formData.username}
+            onChange={updateFormData}
+            required
+            icon={<UserIcon />}
+          />
 
-            {/* PASSWORD */}
-            <label htmlFor="password">Password</label>
-            <div className="relative">
-              <input
-                ref={passwordRef}
-                type="password"
-                id="password"
-                name="password"
-                defaultValue={formData.password}
-                onChange={updateFormData}
-                required
-              />
-              <i onClick={togglePassword}>
-                {showPassword ? <EyeCrossIcon /> : <EyeIcon />}
-              </i>
-              <Link to={PATH.forgot_password}>Forgot Password?</Link>
-            </div>
+          {/* PASSWORD */}
+          <FormPassword
+            label="Password"
+            type="password"
+            id="password"
+            name="password"
+            defaultValue={formData.password}
+            onChange={updateFormData}
+            required
+            icon={[<EyeCrossIcon />, <EyeIcon />]}
+          />
+          <Link to={PATH.forgot_password}>Forgot Password?</Link>
 
-            {/* BUTTON */}
-            <button>
-              {submitting ? (
-                <ActivityIndicator size={16} text={"Please wait..."} />
-              ) : (
-                "Log in"
-              )}
-            </button>
-          </fieldset>
-        </form>
+          {/* BUTTON */}
+          <FormButton text="Log in" disabled={submitting} />
+        </FormFieldset>
 
         {/* NAV */}
         <nav>

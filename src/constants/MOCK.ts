@@ -12,5 +12,7 @@ export default Object.freeze({
   notifications: 0,
   profile: 1,
   capture: 0,
+  members: 1,
+  members_create: 1,
   finances: 0,
 });

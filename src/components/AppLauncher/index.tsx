@@ -1,6 +1,7 @@
 import React from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import {
+  FcAndroidOs as HomeIcon,
   FcComboChart as FinancesIcon,
   FcBusinessman as PastorsIcon,
   FcCustomerSupport as WorkersIcon,
@@ -60,9 +61,9 @@ export default React.memo(AppLauncher);
 
 const apps = [
   {
-    href: PATH.tent,
-    text: "Capture",
-    icon: <CaptureIcon size="1.5em" />,
+    href: PATH.dashboard,
+    text: "Home",
+    icon: <HomeIcon size="1.5em" />,
   },
   {
     href: PATH.tent,
@@ -75,7 +76,7 @@ const apps = [
     icon: <WorkersIcon size="1.5em" />,
   },
   {
-    href: PATH.tent,
+    href: PATH.members,
     text: "Members",
     icon: <MembersIcon size="1.5em" />,
   },

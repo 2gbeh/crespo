@@ -4,11 +4,11 @@ import { GoAlert } from "react-icons/go";
 import Modal from "react-bootstrap/Modal";
 import { Flex, Border } from "@/common/components";
 //
-import APP from "@/constants/APP";
+import COLOR from "@/constants/COLOR";
 
 type TModal = { show?: boolean; onClose?: () => void; onContinue?: () => void };
 
-const Dialog = ({ show, onClose, onContinue }: TModal) => {
+const DialogAlert = ({ show, onClose, onContinue }: TModal) => {
   return (
     <Modal
       show={show}
@@ -19,8 +19,8 @@ const Dialog = ({ show, onClose, onContinue }: TModal) => {
     >
       <Styled.Container>
         <Flex.CenterCenter $cross>
-          <Border $color={APP.color.danger_bg} $size={40}>
-            <GoAlert color={APP.color.danger_fg} size={"1.5em"} />
+          <Border $color={COLOR.danger_bg} $size={40}>
+            <GoAlert color={COLOR.danger_fg} size={"1.5em"} />
           </Border>
           <b>Are you sure?</b>
           <p>
@@ -41,7 +41,7 @@ const Dialog = ({ show, onClose, onContinue }: TModal) => {
   );
 };
 
-export default React.memo(Dialog);
+export default React.memo(DialogAlert);
 
 const Styled = {
   Container: styled.div`
@@ -61,13 +61,13 @@ const Styled = {
       margin-top: 20px;
 
       &[type="reset"] {
-        color: ${APP.color.brand};
+        color: ${COLOR.brand};
         font-size: 14px;
         font-weight: 600;
       }
 
       &[type="submit"] {
-        background-color: ${APP.color.brand};
+        background-color: ${COLOR.brand};
         color: white;
         border-radius: 4px;
         padding: 5px 12px;

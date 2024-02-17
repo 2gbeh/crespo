@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import APP from "@/constants/APP";
+import COLOR from "@/constants/COLOR";
 
 export const styles = {
   icon: {
     size: "1.2em",
-    color: '#333'
+    color: "#333",
   },
 };
 
@@ -16,7 +16,6 @@ export default {
     position: fixed;
     bottom: 0;
     z-index: 7;
-
 
     figure {
       /* border: 1px solid #eee; */
@@ -38,7 +37,7 @@ export default {
 
         &.active {
           * {
-            color: ${APP.color.brand};
+            color: ${COLOR.brand};
           }
         }
       }

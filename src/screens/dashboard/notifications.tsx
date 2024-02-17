@@ -14,7 +14,7 @@ import {
   SketchBox as Box,
 } from "@/common/components";
 //
-import APP from "@/constants/APP";
+import COLOR from "@/constants/COLOR";
 import { wrap } from "@/utils";
 import date from "@/utils/phpDateFormat";
 import Styled, { styles } from "@/modules/Notifications/Notifications.module";
@@ -33,7 +33,7 @@ export default function NotificationsScreen() {
           {mockData.slice(0, 3).map((e, i) => (
             <Flex.Between key={i} as="li" $gap={0} $nowrap>
               <Flex.Start $nowrap>
-                <Border $size={32} $color={APP.color.brand_tint}>
+                <Border $size={32} $color={COLOR.brand_tint}>
                   {
                     [<BirthdaysIcon />, <WeddingsIcon />, <VendorsIcon />][
                       Number(e.status)
@@ -60,7 +60,7 @@ export default function NotificationsScreen() {
           {mockData.slice(-2).map((e, i) => (
             <Flex.Between key={i} as="li" $gap={0} $nowrap>
               <Flex.Start $nowrap>
-                <Border $size={32} $color={APP.color.brand_tint}>
+                <Border $size={32} $color={COLOR.brand_tint}>
                   {
                     [<BirthdaysIcon />, <WeddingsIcon />, <VendorsIcon />][
                       Number(e.status)
