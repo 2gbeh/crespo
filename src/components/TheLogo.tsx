@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AvatarPhoto } from "@/components/Avatar";
+import AvatarPhoto from "@/components/Avatar/Photo";
 
 type TTheLogo = {
   size?: number;

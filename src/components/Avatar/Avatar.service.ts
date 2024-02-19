@@ -14,7 +14,7 @@ export const COLOR = Object.freeze([
 ]);
 
 export const getRandomColor = () => {
-  let i = Math.floor(Math.random() * (COLOR.length - 0 + 1)) + 0;
+  let i = Math.floor(Math.random() * (COLOR.length - 1)) + 0;
   return COLOR[i];
 };
 

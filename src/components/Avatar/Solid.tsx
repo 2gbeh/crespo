@@ -2,13 +2,18 @@ import React from "react";
 import { getColor, getInitials } from "./Avatar.service";
 
 type TAvatarSolid = {
-  text: string;
+  text?: string;
   color?: string;
   size?: number;
   title?: string;
 };
 
-const AvatarSolid = ({ text, color, size = 32, title = "" }: TAvatarSolid) => {
+const AvatarSolid = ({
+  text = "NA",
+  color,
+  size = 32,
+  title = "",
+}: TAvatarSolid) => {
   return (
     <div
       className="rounded-full flex items-center justify-center text-white text-xs tracking-wide"

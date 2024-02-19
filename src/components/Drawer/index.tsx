@@ -47,7 +47,7 @@ const Drawer = ({ show, onClose }: { show: boolean; onClose: () => void }) => {
   //
   return (
     <Offcanvas show={show} onHide={onClose} backdrop>
-      <Styled.Hero>
+      <Styled.Hero onClick={onClose}>
         <Border $size={85} $color={"#873e7b"}>
           <Bavatar
             src="/uploads/user-sehiaghe.png"
@@ -55,6 +55,7 @@ const Drawer = ({ show, onClose }: { show: boolean; onClose: () => void }) => {
             outline={false}
             bottom={2}
             right={-4}
+            alt
           />
         </Border>
         <h1>Sandra Ehiaghe (Mrs.)</h1>

@@ -29,9 +29,13 @@ export default class FakerUser extends FakerDate {
   get middleName() {
     return faker.person.middleName();
   }
-  // Allen Brown
+  // Mr. Allen Brown
   get fullName() {
     return faker.person.fullName();
+  }
+  // Allen Brown
+  get otherNames() {
+    return faker.person.firstName() + " " + faker.person.middleName();
   }
   // M | F
   get sex() {

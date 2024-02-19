@@ -42,8 +42,8 @@ export const len = (x) =>
     ? Array.isArray(x)
       ? x.length
       : ["string", "number"].includes(typeof x)
-      ? x.toString().length
-      : 0
+        ? x.toString().length
+        : 0
     : 0;
 
 // left/right pad string with another string
@@ -51,8 +51,8 @@ export const pad = (str, x = 3, y = "0") =>
   typeof x === "number"
     ? str.toString().padEnd(x, y)
     : typeof y === "number"
-    ? str.toString().padStart(y, x)
-    : str;
+      ? str.toString().padStart(y, x)
+      : str;
 
 // await zzz() - mock api request delay
 export const zzz = (secs = 3) =>
@@ -86,6 +86,13 @@ export const wrap = (x, len = 160) => {
   return str.length > len ? str.slice(0, len - 3) + "..." : str;
 };
 
+// check internet status
+export const live = window?.navigator?.onLine;
+
+// case-insensitive string search
+export const ifind = (str, substr) =>
+  str.toString().search(new RegExp(substr.toString(), "i")) > -1;
+
 // is defined or replace
 export const isset = (...args) => {
   switch (args.length) {
@@ -97,6 +104,3 @@ export const isset = (...args) => {
       return args[0] ? args[0].toString().trim().length > 0 : false;
   }
 };
-
-// check internet status
-export const live = window?.navigator?.onLine;

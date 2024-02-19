@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 type TAvatarPhoto = {
-  src?: string;
+  src?: string | null;
   size?: number;
   radius?: string;
   title?: string;
@@ -12,7 +12,7 @@ type TAvatarPhoto = {
 };
 
 const AvatarPhoto = ({
-  src = `/images/avatar-flat.png`,
+  src,
   size = 32,
   radius = "100%",
   title = "",
@@ -33,7 +33,7 @@ const AvatarPhoto = ({
       }}
     >
       <img
-        src={src}
+        src={src || `/images/avatar-flat.png`}
         alt={title}
         title={title}
         className={fill ? `object-cover` : `object-contain`}
