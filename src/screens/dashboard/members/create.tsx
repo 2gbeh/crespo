@@ -27,7 +27,7 @@ import fakerHelper, { FakerHelper } from "@/lib/faker-js";
 
 export default function CreateMemberScreen() {
   const [submitting, setSubmitting] = React.useState(false);
-  fakerHelper.log(fakerHelper.getPeople);
+  // fakerHelper.log(fakerHelper.getPeople);
   return (
     <>
       {/* HEADER */}

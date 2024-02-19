@@ -9,13 +9,11 @@ import {
   Repeat as Rx,
   SketchBox as Box,
 } from "@/common/components";
-import { AvatarPhoto, AvatarSolid } from "@/components/Avatar";
+import AvatarSolid from "@/components/Avatar/Solid";
 import Search from "@/components/Search";
 //
 import fakeMembers from "@/data/members";
 import MemberPipe from "@/utils/pipes/Member.pipe";
-import { ETitle } from "@/constants/enums/Person";
-import { EHouse, EDepartment } from "@/constants/enums/App";
 import EnumHelper from "@/utils/helpers/EnumHelper";
 
 export default function MembersScreen() {
