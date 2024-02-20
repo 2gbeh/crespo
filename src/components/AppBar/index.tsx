@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 //
 import { Flex, SketchBox as Box } from "@/common/components";
 import Head from "../Head";
-import { AvatarPhoto } from "../Avatar";
+import  AvatarPhoto  from "../Avatar/Photo";
 import Badge from "../Badge";
 import Drawer from "../Drawer";
 import AppLauncher from "../AppLauncher";

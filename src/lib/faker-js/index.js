@@ -38,6 +38,9 @@ export class FakerHelper extends Seeders {
     }
     return asObject ? arr.pop() : arr;
   }
+  // 0 - 9
+  static number = (min = 0, max = 9) =>
+    parseInt(faker.commerce.price({ min, max, dec: 0 }));
   // 12
   static numbers = (length = 2, allowLeadingZeros = false) =>
     faker.string.numeric({ length, allowLeadingZeros });

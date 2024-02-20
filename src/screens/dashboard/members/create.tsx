@@ -8,7 +8,7 @@ import {
   SafeAreaView,
   SketchBox as Box,
 } from "@/common/components";
-import Bavatar from "@/components/Bavatar";
+import AvatarPhoto from "@/components/Avatar/Photo";
 import {
   FormFieldset,
   FormInput,
@@ -19,13 +19,15 @@ import {
 import COLOR from "@/constants/COLOR";
 import PATH from "@/constants/PATH";
 import { ETitle, EGender, EMaritalStatus } from "@/constants/enums/Person";
-import { EEntity, EHouse, EDepartment } from "@/constants/enums/Config";
-import EnumHelper from "@/utils/helpers/Enum.helper";
+import { EEntity, EHouse, EDepartment } from "@/constants/enums/App";
+import EnumHelper from "@/utils/helpers/EnumHelper";
 import M from "@/constants/MOCK";
 import Styled, { styles } from "@/modules/Profile/Profile.module";
+import fakerHelper, { FakerHelper } from "@/lib/faker-js";
 
 export default function CreateMemberScreen() {
   const [submitting, setSubmitting] = React.useState(false);
+  // fakerHelper.log(fakerHelper.getPeople);
   return (
     <>
       {/* HEADER */}
@@ -34,7 +36,9 @@ export default function CreateMemberScreen() {
       {/* MAIN */}
       <SafeAreaView>
         <Styled.Container>
-          <Bavatar center size={80} bottom={2} right={4} />
+          <Flex.CenterCenter>
+            <AvatarPhoto src={"/images/camera.png"} size={80} />
+          </Flex.CenterCenter>
 
           <FormFieldset
             // onSubmit={handleSubmit}
@@ -176,6 +180,13 @@ export default function CreateMemberScreen() {
                 />
               </div>
             </Flex.CenterBetween>
+            {/* JOINED */}
+            <FormInput
+              label="Membership Date"
+              type="date"
+              id="joined"
+              name="joined"
+            />
 
             <div className="mt-4 text-center">
               {/* BUTTON */}

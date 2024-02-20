@@ -15,7 +15,7 @@ export default class FakerCommon {
   }
   // 0 | 9
   get number() {
-    return faker.commerce.price({ min: 0, max: 9, dec: 0 });
+    return parseInt(faker.commerce.price({ min: 0, max: 9, dec: 0 }));
   }
   // a | z
   get letter() {

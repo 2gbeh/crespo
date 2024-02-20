@@ -15,7 +15,7 @@ export default {
       margin-top: 10px;
 
       em {
-        color: ${COLOR.my_blue};
+        color: ${COLOR.brand_blue};
         margin-top: 2px;
         font-size: 12px;
         font-style: normal;

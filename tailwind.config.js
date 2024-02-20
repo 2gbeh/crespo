@@ -7,6 +7,8 @@ export default {
     extend: {
       colors: {
         brand: COLOR.brand,
+        brand_gold: COLOR.brand_gold,
+        brand_blue: COLOR.brand_blue,
       },
     },
   },

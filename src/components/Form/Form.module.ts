@@ -5,6 +5,7 @@ export const styles = {};
 
 export default {
   Input: styled.input`
+    background-color: #fff !important;
     outline: none;
     border: none;
     border-bottom: 1px solid #ddd;

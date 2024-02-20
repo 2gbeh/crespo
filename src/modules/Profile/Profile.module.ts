@@ -26,7 +26,7 @@ export default {
       align-items: center;
       gap: 5px;
       p {
-        color: ${COLOR.my_blue};
+        color: ${COLOR.brand_blue};
         color: #888;
         font-size: 14px;
       }

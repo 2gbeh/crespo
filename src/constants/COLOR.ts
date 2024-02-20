@@ -2,7 +2,7 @@
 // https://hexcolorpedia.com/color/?q=7a296c
 export default Object.freeze({
   // Liberty
-  white: "#faf9f6",
+  white: "#fafafa",
   green: "#16BC00",
   pink: "#D81B60",
 
@@ -41,6 +41,6 @@ export default Object.freeze({
   accent_rgb: [41, 121, 55],
 
   // Others
-  my_gold: "#d2af6d",
-  my_blue: "#3a418f",
+  brand_gold: "#d2af6d",
+  brand_blue: "#3a418f",
 });
