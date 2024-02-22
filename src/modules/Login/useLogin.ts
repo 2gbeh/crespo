@@ -1,11 +1,10 @@
-import { FormEvent, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { FormEvent, useContext, useState } from "react";
 import { useToast } from "@/components/radix-ui/toast/use-toast";
+import { useIntended } from "@/components/Intended";
 //
-import PATH from "@/constants/PATH";
 import M from "@/constants/MOCK";
 import * as firebaseAuth from "@/lib/firebase/auth";
-import { zzz } from "@/utils";
+import AuthContext from "@/hooks/context/AuthContext";
 
 export const initialFormData = M.auth
   ? {
@@ -18,23 +17,28 @@ export const initialFormData = M.auth
     };
 
 export default function useLogin(formData: Record<string, string>) {
-  const location = useLocation();
-  const navigate = useNavigate();
   const { toast } = useToast();
+  const intended = useIntended();
+  const { store: storeAuth } = useContext(AuthContext);
   const [submitting, setSubmitting] = useState(false);
   //
   async function handleSubmit(ev: FormEvent) {
     ev.preventDefault();
     setSubmitting(true);
-    console.log("🚀 ~ useLogin ~ formData:", formData);
+    // console.log("🚀 ~ useLogin ~ formData:", formData);
     const res = await firebaseAuth.login(formData.username, formData.password);
     console.log("🚀 ~ handleSubmit ~ res:", res);
-    toast({
-      title: "Status: " + res.errno,
-      description: res.error + " intended:" + location.state.intended,
-    });
-    navigate(location?.state?.intended || PATH.dashboard);
     setSubmitting(false);
+
+    if (res.errno == 200) {
+      storeAuth(res.data);
+      intended();
+    } else {
+      toast({
+        title: "Status: " + res.errno,
+        description: res.error,
+      });
+    }
   }
   //
   return {

@@ -28,8 +28,11 @@ import {
 } from "@/common/components";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Bavatar from "@/components/Bavatar";
+import DialogAlert from "@/components/Dialog/Alert";
+import AuthContext from "@/hooks/context/AuthContext";
 //
 import APP from "@/constants/APP";
+import M from "@/constants/MOCK";
 import PATH from "@/constants/PATH";
 import Styled, { styles } from "./Drawer.module";
 
@@ -44,6 +47,8 @@ const ICONS_II = [<TbHelpTriangle />, <TbSettings />, <TbUserShield />];
 
 const Drawer = ({ show, onClose }: { show: boolean; onClose: () => void }) => {
   const navigate = useNavigate();
+  const { destory } = React.useContext(AuthContext);
+  const [showDialog, setShowDialog] = React.useState(Boolean(M.logout));
   //
   return (
     <Offcanvas show={show} onHide={onClose} backdrop>
@@ -109,13 +114,25 @@ const Drawer = ({ show, onClose }: { show: boolean; onClose: () => void }) => {
 
       <Styled.Footer>
         <Flex.CenterBetween>
-          <button onClick={() => navigate(PATH.login)}>
+          <button onClick={() => setShowDialog(true)}>
             <VscSignOut size={"1.2em"} />
             Sign out
           </button>
           <small title={APP.build}>v{APP.version}</small>
         </Flex.CenterBetween>
       </Styled.Footer>
+
+      {/* DIALOG */}
+      {showDialog && (
+        <DialogAlert
+          show={showDialog}
+          onClose={() => setShowDialog(false)}
+          onContinue={() => {
+            destory();
+            navigate(PATH.login, { replace: true });
+          }}
+        />
+      )}
     </Offcanvas>
   );
 };
