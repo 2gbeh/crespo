@@ -7,7 +7,7 @@ import AuthContext from "@/hooks/context/AuthContext";
 //
 import { Flex, SketchBox as Box } from "@/common/components";
 import Head from "../Head";
-import AvatarSolid from "../Avatar/Solid";
+import {AvatarPhoto, AvatarSolid} from "../Avatar";
 import Badge from "../Badge";
 import Drawer from "../Drawer";
 import AppLauncher from "../AppLauncher";
@@ -51,7 +51,11 @@ const AppBar = ({ title, stack }: { title?: string; stack?: string }) => {
               <Styled.ContentLeft>
                 <Flex.CenterStart as="figure">
                   <button onClick={() => setShowDrawer(true)} title="Drawer">
-                    <AvatarSolid text={user?.email || "Anonymous"} size={35} />
+                    {user && user.email ? (
+                      <AvatarSolid text={user.email as string} size={35} />
+                    ) : (
+                      <AvatarPhoto size={35} />
+                    )}
                   </button>
                   <figcaption>
                     <small>You're blessed,</small>
