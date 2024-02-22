@@ -2,8 +2,8 @@ import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 //
-import PATH from "constants/PATH";
-import M from "constants/MOCK";
+import PATH from "@/constants/PATH";
+import M from "@/constants/MOCK";
 import { zzz } from "@/utils";
 
 export const initialFormData = M.auth

@@ -3,10 +3,12 @@ import { FaRegEyeSlash as EyeCrossIcon } from "react-icons/fa6";
 import { FiEye as EyeIcon } from "react-icons/fi";
 import { Link, Head, ActivityIndicator } from "@/common/components";
 //
-import PATH from "constants/PATH";
+import PATH from "@/constants/PATH";
 import Styled from "@/modules/Auth/Auth.module";
 import useAuth from "@/modules/Auth/useAuth";
-import useVerifyEmail, { initialFormData } from "@/modules/VerifyEmail/useVerifyEmail";
+import useVerifyEmail, {
+  initialFormData,
+} from "@/modules/VerifyEmail/useVerifyEmail";
 
 export default function VerifyEmailScreen() {
   const {

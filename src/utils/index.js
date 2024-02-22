@@ -20,6 +20,7 @@ export const __ = (x, esc = false) =>
   x ? (esc ? x.replaceAll(/(<([^>]+)>)/gi, "") : parse(x)) : "";
 
 export const cx = (...classes) => classes.filter(Boolean).join(" ");
+export const cn = (...classes) => classes.filter(Boolean).join(" ");
 
 // debug in browser
 export const dd = (...args) =>

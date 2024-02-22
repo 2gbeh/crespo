@@ -4,7 +4,7 @@ import { FiEye as EyeIcon } from "react-icons/fi";
 import { Link, Head, ActivityIndicator } from "@/common/components";
 import OAuth from "@/components/OAuth";
 //
-import PATH from "constants/PATH";
+import PATH from "@/constants/PATH";
 import Styled from "@/modules/Auth/Auth.module";
 import useAuth from "@/modules/Auth/useAuth";
 import useRegister, { initialFormData } from "@/modules/Register/useRegister";

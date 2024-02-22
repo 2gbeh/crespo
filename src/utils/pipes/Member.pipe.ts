@@ -31,7 +31,7 @@ export default class MemberPipe {
 
   static title = (e: TMember) => {
     let t = e.title as number;
-    return t < 3 && ` (${EnumHelper.asArray(ETitle)[t]}.)`;
+    return t < 3 && ` (${EnumHelper.asArray(ETitle)[t - 1]}.)`;
   };
 
   static fullName = (e: TMember, withTitle: boolean = false) =>
@@ -39,6 +39,6 @@ export default class MemberPipe {
 
   static tel = (e: TMember) => (e.mobile ? e.phone + ", " + e.mobile : e.phone);
 
-  static house = (e: TMember) =>
+  static house = (e: TMember, asKkey = false) =>
     EnumHelper.asArray(EDepartment)[e.house as number];
 }
