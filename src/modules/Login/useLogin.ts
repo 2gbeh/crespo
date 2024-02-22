@@ -33,7 +33,7 @@ export default function useLogin(formData: Record<string, string>) {
       title: "Status: " + res.errno,
       description: res.error + " intended:" + location.state.intended,
     });
-    // navigate(PATH.dashboard);
+    navigate(location?.state?.intended || PATH.dashboard);
     setSubmitting(false);
   }
   //
