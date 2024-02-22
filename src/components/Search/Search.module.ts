@@ -13,7 +13,7 @@ export default {
       border: none;
       border-radius: 4px;
       border: 1px solid #ddd;
-      padding: 8px 40px;
+      padding: 10px 40px;
       font-size: 14px;
       width: 100%;
       display: block;
@@ -24,17 +24,16 @@ export default {
 
     sup,
     sub {
-      position: absolute;
       color: #999;
       font-size: 18px;
       vertical-align: middle;
+      position: absolute;
+      top: 12px;
     }
     sup {
-      top: 10px;
       left: 12px;
     }
     sub {
-      top: 10px;
       right: 12px;
     }
   `,

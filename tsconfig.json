@@ -24,24 +24,21 @@
     /* path alias */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*", "./dist/*", ""],
-      "common/*": ["src/common/*"],
-      "components/*": ["src/components/*"],
-      "constants/*": ["src/constants/*"],
-      "data/*": ["src/data/*"],
-      "hooks/*": ["src/hooks/*"],
-      "modules/*": ["src/modules/*"],
-      "navigation/*": ["src/navigation/*"],
-      "screens/*": ["src/screens/*"],
-      "utils/*": ["src/utils/*"],
+      "@/*": ["./src/*", "./dist/*", ""]
+      // "common/*": ["src/common/*"],
+      // "components/*": ["src/components/*"],
+      // "constants/*": ["src/constants/*"],
+      // "data/*": ["src/data/*"],
+      // "hooks/*": ["src/hooks/*"],
+      // "lib/*": ["src/lib/*"],
+      // "modules/*": ["src/modules/*"],
+      // "navigation/*": ["src/navigation/*"],
+      // "screens/*": ["src/screens/*"],
+      // "utils/*": ["src/utils/*"],
     },
 
-    "types": [
-      "node",
-      "react",
-      "react-dom",
-    ],
+    "types": ["node", "react", "react-dom"]
   },
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

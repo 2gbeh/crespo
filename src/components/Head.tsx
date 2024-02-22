@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 //
-import APP from "constants/APP";
+import APP from "@/constants/APP";
 import { __ } from "@/utils";
 // const { __ } = require("@/utils");
 

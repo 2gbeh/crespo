@@ -1,7 +1,7 @@
 import { LuKeyRound as KeyIcon } from "react-icons/lu";
 import { Link, Head, ActivityIndicator } from "@/common/components";
 //
-import PATH from "constants/PATH";
+import PATH from "@/constants/PATH";
 import Styled from "@/modules/Auth/Auth.module";
 import useAuth from "@/modules/Auth/useAuth";
 import useResetPassword, {

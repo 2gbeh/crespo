@@ -1,5 +1,5 @@
 import React from "react";
-import APP from "constants/APP";
+import APP from "@/constants/APP";
 
 const Version = () => {
   return (

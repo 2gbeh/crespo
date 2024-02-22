@@ -1,13 +1,15 @@
 import { FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useToast } from "@/components/radix-ui/toast/use-toast";
 //
-import PATH from "constants/PATH";
-import M from "constants/MOCK";
+import PATH from "@/constants/PATH";
+import M from "@/constants/MOCK";
+import * as firebaseAuth from "@/lib/firebase/auth";
 import { zzz } from "@/utils";
 
 export const initialFormData = M.auth
   ? {
-      username: "webmaster",
+      username: "tugbeh.osaretin@gmail.com",
       password: "_Thatcrespob0y",
     }
   : {
@@ -16,15 +18,22 @@ export const initialFormData = M.auth
     };
 
 export default function useLogin(formData: Record<string, string>) {
+  const location = useLocation();
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [submitting, setSubmitting] = useState(false);
   //
   async function handleSubmit(ev: FormEvent) {
     ev.preventDefault();
     setSubmitting(true);
     console.log("🚀 ~ useLogin ~ formData:", formData);
-    await zzz();
-    navigate(PATH.dashboard);
+    const res = await firebaseAuth.login(formData.username, formData.password);
+    console.log("🚀 ~ handleSubmit ~ res:", res);
+    toast({
+      title: "Status: " + res.errno,
+      description: res.error + " intended:" + location.state.intended,
+    });
+    // navigate(PATH.dashboard);
     setSubmitting(false);
   }
   //

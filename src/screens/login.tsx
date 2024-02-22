@@ -3,6 +3,7 @@ import { FaRegEyeSlash as EyeCrossIcon } from "react-icons/fa6";
 import { FiEye as EyeIcon, FiLogIn } from "react-icons/fi";
 import { TbLogin2 as LoginIcon } from "react-icons/tb";
 import { Link, Flex, Head, ActivityIndicator } from "@/common/components";
+
 import {
   FormFieldset,
   FormInput,
@@ -11,7 +12,7 @@ import {
 } from "@/components/Form";
 import OAuth from "@/components/OAuth";
 //
-import PATH from "constants/PATH";
+import PATH from "@/constants/PATH";
 import Styled from "@/modules/Auth/Auth.module";
 import useAuth from "@/modules/Auth/useAuth";
 import useLogin, { initialFormData } from "@/modules/Login/useLogin";

@@ -1,4 +1,5 @@
 import React from "react";
+import { FaChevronRight as NextIcon } from "react-icons/fa";
 import {
   Link,
   Flex,
@@ -18,15 +19,16 @@ import {
 //
 import COLOR from "@/constants/COLOR";
 import PATH from "@/constants/PATH";
+import M from "@/constants/MOCK";
 import { ETitle, EGender, EMaritalStatus } from "@/constants/enums/Person";
 import { EEntity, EHouse, EDepartment } from "@/constants/enums/App";
 import EnumHelper from "@/utils/helpers/EnumHelper";
-import M from "@/constants/MOCK";
 import Styled, { styles } from "@/modules/Profile/Profile.module";
 import fakerHelper, { FakerHelper } from "@/lib/faker-js";
 
 export default function CreateMemberScreen() {
   const [submitting, setSubmitting] = React.useState(false);
+
   // fakerHelper.log(fakerHelper.getPeople);
   return (
     <>
@@ -37,7 +39,7 @@ export default function CreateMemberScreen() {
       <SafeAreaView>
         <Styled.Container>
           <Flex.CenterCenter>
-            <AvatarPhoto src={"/images/camera.png"} size={80} />
+            <AvatarPhoto src={"/images/camera-alt.png"} size={80} />
           </Flex.CenterCenter>
 
           <FormFieldset
@@ -45,21 +47,25 @@ export default function CreateMemberScreen() {
             autoComplete="on"
             disabled={submitting}
           >
-            {/* CATEGORY */}
-            <FormSelect
-              label="Category*"
-              id="entity"
-              name="entity"
-              required
-              options={EnumHelper.asOptions(EEntity)}
-            />
-            {/* TITLE */}
-            <FormSelect
-              label="Title"
-              id="title"
-              name="title"
-              options={EnumHelper.asOptions(ETitle)}
-            />
+            {!M.members_create && (
+              <>
+                {/* CATEGORY */}
+                <FormSelect
+                  label="Category*"
+                  id="entity"
+                  name="entity"
+                  required
+                  options={EnumHelper.asOptions(EEntity)}
+                />
+                {/* TITLE */}
+                <FormSelect
+                  label="Title"
+                  id="title"
+                  name="title"
+                  options={EnumHelper.asOptions(ETitle)}
+                />
+              </>
+            )}
             {/* SURNAME + OTHER NAMES */}
             <Flex.CenterBetween $nowrap>
               <div className="">
@@ -120,40 +126,49 @@ export default function CreateMemberScreen() {
                 />
               </div>
             </Flex.CenterBetween>
-            {/* PHONE NUMBERS */}
-            <Flex.CenterBetween $nowrap>
-              <div className="">
+            {!M.members_create && (
+              <>
+                {/* PHONE NUMBERS */}
+                <Flex.CenterBetween $nowrap>
+                  <div className="">
+                    <FormInput
+                      label="Phone Number*"
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      required
+                    />
+                  </div>
+                  <div className="">
+                    <FormInput
+                      label="WhatsApp Number"
+                      type="tel"
+                      id="mobile"
+                      name="mobile"
+                    />
+                  </div>
+                </Flex.CenterBetween>
+              </>
+            )}
+
+            {!M.members_create && (
+              <>
+                {/* EMAIL */}
                 <FormInput
-                  label="Phone Number*"
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  required
+                  label="Email Address"
+                  type="email"
+                  id="email"
+                  name="email"
                 />
-              </div>
-              <div className="">
+                {/* ADDRESS */}
                 <FormInput
-                  label="WhatsApp Number"
-                  type="tel"
-                  id="mobile"
-                  name="mobile"
-                />
-              </div>
-            </Flex.CenterBetween>
-            {/* EMAIL */}
-            <FormInput
-              label="Email Address"
-              type="email"
-              id="email"
-              name="email"
-            />
-            {/* ADDRESS */}
-            <FormInput
-              label="Home Address"
-              type="text"
-              id="address"
-              name="address"
-            />
+                  label="Home Address"
+                  type="text"
+                  id="address"
+                  name="address"
+                />{" "}
+              </>
+            )}
             {/* OCCUPATION */}
             <FormInput
               label="Occupation"
@@ -180,13 +195,17 @@ export default function CreateMemberScreen() {
                 />
               </div>
             </Flex.CenterBetween>
-            {/* JOINED */}
-            <FormInput
-              label="Membership Date"
-              type="date"
-              id="joined"
-              name="joined"
-            />
+            {!M.members_create && (
+              <>
+                {/* JOINED */}
+                <FormInput
+                  label="Membership Date"
+                  type="date"
+                  id="joined"
+                  name="joined"
+                />
+              </>
+            )}
 
             <div className="mt-4 text-center">
               {/* BUTTON */}
@@ -195,9 +214,10 @@ export default function CreateMemberScreen() {
               {/*  */}
               <Link
                 to={PATH.members}
-                className="mt-4 inline-block text-brand text-sm"
+                className="mt-4 text-brand text-sm flex items-center justify-center gap-2 font-medium"
               >
-                View all
+                Members
+                <NextIcon size="1em" />
               </Link>
             </div>
           </FormFieldset>
