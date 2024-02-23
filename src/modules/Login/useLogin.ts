@@ -19,7 +19,7 @@ export const initialFormData = M.auth
 export default function useLogin(formData: Record<string, string>) {
   const { toast } = useToast();
   const intended = useIntended();
-  const { store: storeAuth } = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
   const [submitting, setSubmitting] = useState(false);
   //
   async function handleSubmit(ev: FormEvent) {
@@ -31,7 +31,7 @@ export default function useLogin(formData: Record<string, string>) {
     setSubmitting(false);
 
     if (res.errno == 200) {
-      storeAuth(res.data);
+      authContext.setAuth(res.data);
       intended();
     } else {
       toast({

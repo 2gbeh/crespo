@@ -7,7 +7,7 @@ import AuthContext from "@/hooks/context/AuthContext";
 //
 import { Flex, SketchBox as Box } from "@/common/components";
 import Head from "../Head";
-import {AvatarPhoto, AvatarSolid} from "../Avatar";
+import { AvatarPhoto, AvatarSolid } from "../Avatar";
 import Badge from "../Badge";
 import Drawer from "../Drawer";
 import AppLauncher from "../AppLauncher";
@@ -24,7 +24,6 @@ const AppBar = ({ title, stack }: { title?: string; stack?: string }) => {
   const [showAppLauncher, setShowAppLauncher] = React.useState(
     Boolean(M.app_launcher)
   );
-  React.useEffect(() => {}, [user]);
   //
   return (
     <>
@@ -52,7 +51,10 @@ const AppBar = ({ title, stack }: { title?: string; stack?: string }) => {
                 <Flex.CenterStart as="figure">
                   <button onClick={() => setShowDrawer(true)} title="Drawer">
                     {user && user.email ? (
-                      <AvatarSolid text={user.email as string} size={35} />
+                      <AvatarSolid
+                        text={user.email as string}
+                        size={35}
+                      />
                     ) : (
                       <AvatarPhoto size={35} />
                     )}

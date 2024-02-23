@@ -1,79 +1,16 @@
-// "use client";
-
-import React from "react";
+import React, { createContext, useEffect, useState } from "react";
 import secureLocalStorage from "react-secure-storage";
 
-enum EType {
-  Store = "STORE",
-  Destroy = "DESTROY",
-}
+type TValue = Record<string, unknown>;
+type TState = TValue | null;
 
-type TUser = Record<string, unknown> | null;
-
-type TPayload = TUser | undefined;
-
-type TAction = {
-  type: EType;
-  payload?: TPayload;
-};
-
-function useAuthReducer() {
-  const STORAGE_KEY = "auth";
-
-  const [auth, dispatch] = React.useReducer(
-    (state: TUser, { type, payload }: TAction) => {
-      console.log("🚀 ~ useAuthReducer ~ state:", state);
-      switch (type) {
-        case EType.Store: {
-          secureLocalStorage.setItem(
-            STORAGE_KEY,
-            payload as Record<string, unknown>
-          );
-          return {
-            ...state,
-            value: payload,
-          };
-        }
-        case EType.Destroy: {
-          secureLocalStorage.removeItem(STORAGE_KEY);
-          return {
-            ...state,
-            value: null,
-          };
-        }
-        default:
-          return state;
-      }
-    },
-    secureLocalStorage.getItem(STORAGE_KEY) as TUser
-  );
-
-  const store = (payload?: TPayload) =>
-    dispatch({ type: EType.Store, payload });
-
-  const destory = () => dispatch({ type: EType.Destroy });
-
-  return {
-    auth,
-    store,
-    destory,
-  };
-}
-
-interface IAuthContext {
-  auth: TUser;
-  store: (user: TUser) => void;
-  destory: () => void;
-}
-
-const initialAuthContext: IAuthContext = {
-  auth: null,
-  store: () => undefined,
-  destory: () => undefined,
-};
+const STORAGE_KEY = "secure-auth";
 
 // const authContext = React.useContext(AuthContext);
-export const AuthContext = React.createContext<IAuthContext>(initialAuthContext);
+export const AuthContext = createContext<{
+  auth: TState;
+  setAuth: React.Dispatch<React.SetStateAction<TState>>;
+}>({ auth: null, setAuth: () => undefined });
 
 // <AuthContextProvider>{children}</AuthContextProvider>
 export function AuthContextProvider({
@@ -81,13 +18,20 @@ export function AuthContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { auth, store, destory } = useAuthReducer();
+  const [auth, setAuth] = useState<TState>(
+    secureLocalStorage.getItem(STORAGE_KEY) as TValue
+  );
+  useEffect(() => {
+    auth
+      ? secureLocalStorage.setItem(STORAGE_KEY, auth)
+      : secureLocalStorage.removeItem(STORAGE_KEY);
+  }, [auth]);
 
   return (
-    <AuthContext.Provider value={{ auth, store, destory }}>
+    <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
     </AuthContext.Provider>
   );
 }
 
-export default AuthContext
+export default AuthContext;

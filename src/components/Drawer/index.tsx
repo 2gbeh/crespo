@@ -47,7 +47,7 @@ const ICONS_II = [<TbHelpTriangle />, <TbSettings />, <TbUserShield />];
 
 const Drawer = ({ show, onClose }: { show: boolean; onClose: () => void }) => {
   const navigate = useNavigate();
-  const { destory } = React.useContext(AuthContext);
+  const authContext = React.useContext(AuthContext);
   const [showDialog, setShowDialog] = React.useState(Boolean(M.logout));
   //
   return (
@@ -128,7 +128,7 @@ const Drawer = ({ show, onClose }: { show: boolean; onClose: () => void }) => {
           show={showDialog}
           onClose={() => setShowDialog(false)}
           onContinue={() => {
-            destory();
+            authContext.setAuth(null);
             navigate(PATH.login, { replace: true });
           }}
         />

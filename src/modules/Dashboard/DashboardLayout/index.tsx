@@ -4,7 +4,7 @@ import Intended from "@/components/Intended";
 import AuthContext from "@/hooks/context/AuthContext";
 
 export default function DashboardLayout() {
-  const { auth } = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
   //
-  return auth ? <Outlet /> : <Intended />;
+  return authContext.auth ? <Outlet /> : <Intended />;
 }
