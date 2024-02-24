@@ -13,7 +13,7 @@ import AvatarSolid from "@/components/Avatar/Solid";
 import Search from "@/components/Search";
 //
 import fakeMembers from "@/data/members";
-import MemberPipe from "@/utils/pipes/Member.pipe";
+import MemberPipe from "@/api/members/Member.pipe";
 import { wrap } from "@/utils";
 
 export default function MembersScreen() {

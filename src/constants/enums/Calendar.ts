@@ -47,3 +47,9 @@ export enum EDayShort {
   Fri,
   Sat,
 }
+
+export const NumberSeries = (from = 1, to = 31) => {
+  let arr = [];
+  for (let i = from; i <= to; i++) arr.push(i);
+  return arr;
+};

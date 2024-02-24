@@ -1,4 +1,4 @@
-// import STORAGE from "@/constants/STORAGE";
+// import TABLE from "@/constants/TABLE";
 export default Object.freeze({
   events: "/events",
   members: "/members",

@@ -43,9 +43,16 @@ export default class EnumHelper {
       }))
       .filter(({ key }) => isNaN(+key));
 
-  static asOptions = (E: object): TCollection =>
-    this.asObject(E).map((e) => ({
-      value: e.value,
-      option: e.key,
-    }));
+  static asOptions = (E: object, keyAsOption = true): TCollection =>
+    this.asObject(E).map((e) =>
+      keyAsOption
+        ? {
+            value: e.value,
+            option: e.key,
+          }
+        : {
+            value: e.key,
+            option: e.value,
+          }
+    );
 }

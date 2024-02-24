@@ -17,12 +17,11 @@ export enum EGender {
   Female,
 }
 
-export enum EAgeGroup {
-  Adolescent = 1,
-  Teenager,
-  Adult,
-  Senior,
-  Elder,
+export enum AgeGroup {
+  A = "0 - 12  (Child)",
+  B = "13 - 19 (Teenager)",
+  C = "20 - 64 (Adult)",
+  D = "65 - *  (Senior)",
 }
 
 export enum EMaritalStatus {

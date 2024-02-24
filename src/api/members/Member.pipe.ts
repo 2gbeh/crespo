@@ -1,5 +1,5 @@
 import { ETitle } from "@/constants/enums/Person";
-import { EDepartment } from "@/constants/enums/App";
+import { EDepartment } from "@/constants/enums/Lists";
 import EnumHelper from "@/utils/helpers/EnumHelper";
 
 // type TMember = Record<string, null | boolean | number | string>;
