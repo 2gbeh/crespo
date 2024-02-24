@@ -30,6 +30,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Bavatar from "@/components/Bavatar";
 import DialogAlert from "@/components/Dialog/Alert";
 import AuthContext from "@/hooks/context/AuthContext";
+import * as firebaseAuth from "@/lib/firebase/auth";
 //
 import APP from "@/constants/APP";
 import M from "@/constants/MOCK";
@@ -49,6 +50,15 @@ const Drawer = ({ show, onClose }: { show: boolean; onClose: () => void }) => {
   const navigate = useNavigate();
   const authContext = React.useContext(AuthContext);
   const [showDialog, setShowDialog] = React.useState(Boolean(M.logout));
+  const [signingOut, setSigningOut] = React.useState(false);
+  async function handleLogout() {
+    setSigningOut(true);
+    await firebaseAuth.logout();
+    authContext.setAuth(null);
+    setSigningOut(false);
+    setShowDialog(false);
+    navigate(PATH.login, { replace: true });
+  }
   //
   return (
     <Offcanvas show={show} onHide={onClose} backdrop>
@@ -127,10 +137,8 @@ const Drawer = ({ show, onClose }: { show: boolean; onClose: () => void }) => {
         <DialogAlert
           show={showDialog}
           onClose={() => setShowDialog(false)}
-          onContinue={() => {
-            authContext.setAuth(null);
-            navigate(PATH.login, { replace: true });
-          }}
+          onContinue={handleLogout}
+          processing={signingOut}
         />
       )}
     </Offcanvas>

@@ -1,4 +1,4 @@
-import { Timestamp, serverTimestamp } from "firebase/firestore";
+import { serverTimestamp } from "firebase/firestore";
 
 export const TIMESTAMPS = Object.freeze({
   created_at: "created_at",
@@ -40,7 +40,6 @@ export function getTimestamps(as = 0) {
       deleted_at: null,
     },
     serverTimestamp(),
-    // Timestamp.fromDate(new Date()),
   ];
   //
   switch (as) {
@@ -50,6 +49,10 @@ export function getTimestamps(as = 0) {
     case 2:
       obj.deleted_at = now;
       break;
+    case 10:
+      obj.created_at = now;
+      obj.updated_at = now;
+      break;
     default:
       obj.created_at = now;
   }
@@ -57,7 +60,8 @@ export function getTimestamps(as = 0) {
   return obj;
 }
 
-export class City {
+// Firestore transformer
+class City {
   constructor(name, state, country) {
     this.name = name;
     this.state = state;
@@ -69,7 +73,7 @@ export class City {
 }
 
 // Firestore data converter
-export const cityConverter = {
+const cityConverter = {
   toFirestore: (city) => {
     return {
       name: city.name,

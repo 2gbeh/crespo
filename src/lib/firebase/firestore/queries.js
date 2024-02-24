@@ -1,20 +1,13 @@
+import { db } from "../config";
 import {
-  doc,
-  setDoc,
-  serverTimestamp,
   query,
   where,
   getCountFromServer,
   getAggregateFromServer,
   sum,
 } from "firebase/firestore";
-import { db } from "../config";
 
-export const getDocRef = (collection, documentId, collectionOnly = false) => {
-  let dbCollection = db.collection(collection);
-  return collectionOnly ? dbCollection : dbCollection.doc(documentId);
-};
-
+// COUNT
 export async function getCount(collection, whereClause) {
   let docRef = getDocRef(collection, null, true);
   //
@@ -29,6 +22,7 @@ export async function getCount(collection, whereClause) {
   return snapshot.data()?.count || 0;
 }
 
+// SUM
 export async function getSum(collection, field, whereClause) {
   let [docRef, aggregateFn] = [
     getDocRef(collection, null, true),
@@ -47,7 +41,7 @@ export async function getSum(collection, field, whereClause) {
   return snapshot.data()?.value || 0;
 }
 
-// GET ALL DOCS
+// ALL
 export async function getAll(collection, orderBy = "createdAt") {
   return getDocRef(collection, null, true)
     .orderBy(orderBy)
@@ -62,7 +56,7 @@ export async function getAll(collection, orderBy = "createdAt") {
     .catch((error) => error);
 }
 
-// GET PAGINATED DOCS
+// PAGINATED
 export async function getPaginated(
   collection,
   orderBy = "createdAt",
@@ -88,7 +82,7 @@ export async function getPaginated(
     .catch((error) => error);
 }
 
-// GET RECENT DOCS
+// TOP
 export async function getRecent(collection, orderBy = "createdAt", limit = 10) {
   return getDocRef(collection, null, true)
     .orderBy(orderBy, "desc")
@@ -104,7 +98,7 @@ export async function getRecent(collection, orderBy = "createdAt", limit = 10) {
     .catch((error) => error);
 }
 
-// GET DOC BY ID
+// BY ID
 export async function getById(collection, documentId) {
   return getDocRef(collection, documentId)
     .get()
@@ -112,7 +106,7 @@ export async function getById(collection, documentId) {
     .catch((error) => error);
 }
 
-// GET DOC BY ID (REAL-TIME)
+// BY ID (REAL-TIME)
 export function getById_Rt(collection, documentId) {
   let response = {};
   let unsubscribe = getDocRef(collection, documentId).onSnapshot(
@@ -124,7 +118,7 @@ export function getById_Rt(collection, documentId) {
   return response;
 }
 
-// GET DOCS WITH WHERE CLAUSE
+// GET, WHERE
 export async function getWhere(
   collection,
   field,
@@ -145,7 +139,7 @@ export async function getWhere(
     .catch((error) => error);
 }
 
-// GET DOCS WITH WHERE CLAUSE (REAL-TIME)
+// GET, WHERE (REAL-TIME)
 export function getWhere_Rt(
   collection,
   field,

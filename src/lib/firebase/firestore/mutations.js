@@ -1,18 +1,26 @@
 import { db } from "../config";
-import { collection, doc, setDoc, addDoc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  setDoc,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
 import { getTimestamps, getTimestamp } from "./firestore.service";
 
 // CREATE OR SEED
-export async function create(table, data, uuid) {
+// ('users', mockUser, 1) | ('users', mockUsers, 'id')
+export async function create(table, data, uuid_Pk) {
   try {
     let seed = Array.isArray(data);
     seed
       ? await Promise.all(
-          data.map((e, i) => setDoc(doc(db, table, e?.[uuid] || i), e))
+          data.map((e, i) => setDoc(doc(db, table, e?.[uuid_Pk] || i), e))
         )
-      : await setDoc(doc(db, table, uuid), data);
+      : await setDoc(doc(db, table, uuid_Pk), data);
     //
-    return seed ? true : uuid;
+    return seed ? true : uuid_Pk;
   } catch (error) {
     return error;
   }
@@ -34,45 +42,44 @@ export async function add(table, data, addTimestamp = true) {
 // UPDATE
 export async function update(table, data, uuid, addTimestamp = true) {
   try {
-    let res = await updateDoc(
+    await updateDoc(
       doc(db, table, uuid),
       addTimestamp ? { ...data, ...getTimestamp(1) } : data
     );
-    return res;
+    return uuid;
   } catch (error) {
     return error;
   }
 }
 
 // ADD OR UPDATE (UPSERT)
-export async function save(collection, documentId, data, hasTimestamp = true) {
-  return getDocRef(collection, documentId)
-    .set(
-      hasTimestamp
+export async function save(table, data, uuid, addTimestamp = true) {
+  try {
+    await setDoc(
+      doc(db, table, uuid),
+      addTimestamp
         ? {
             ...data,
-            createdAt: serverTimestamp(),
-            updatedAt: serverTimestamp(),
+            ...getTimestamps(10),
           }
         : data,
-      {
-        merge: true,
-      }
-    )
-    .then(() => true)
-    .catch((error) => error);
+      { merge: true }
+    );
+    return uuid;
+  } catch (error) {
+    return error;
+  }
 }
 
 // DELETE OR SOFT-DELETE
-export async function remove(collection, documentId, softDelete = true) {
-  const docRef = getDocRef(collection, documentId);
-  return softDelete
-    ? docRef
-        .update({ deletedAt: serverTimestamp() })
-        .then(() => true)
-        .catch((error) => error)
-    : docRef
-        .delete()
-        .then(() => true)
-        .catch((error) => error);
+export async function remove(table, uuid, softDelete = true) {
+  try {
+    softDelete
+      ? await updateDoc(doc(db, table, uuid), getTimestamp(2))
+      : await deleteDoc(doc(db, table, uuid));
+    //
+    return uuid;
+  } catch (error) {
+    return error;
+  }
 }

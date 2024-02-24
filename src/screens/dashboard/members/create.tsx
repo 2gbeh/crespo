@@ -40,8 +40,7 @@ export default function CreateMemberScreen() {
   async function handleSubmit() {
     let data = fakeMembers[1];
     setSubmitting(true);
-    // const res = await firebaseMutation.create(TABLE.members, fakeMembers, "id");
-    const res = await firebaseMutation.update(TABLE.members, data, '1aaa7c1eaebaa45ec49eb00d');
+    const res = await firebaseMutation.create(TABLE.members, fakeMembers, "id");
     setSubmitting(false);
     console.log("🚀 ~ handleSubmit ~ res:", res);
   }
