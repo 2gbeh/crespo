@@ -2,6 +2,7 @@
 export default Object.freeze({
   auth: 1,
   login: 0,
+  logout: 0,
   register: 0,
   forgot_password: 0,
   reset_password: 0,

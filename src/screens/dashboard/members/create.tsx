@@ -20,14 +20,30 @@ import {
 import COLOR from "@/constants/COLOR";
 import PATH from "@/constants/PATH";
 import M from "@/constants/MOCK";
-import { ETitle, EGender, EMaritalStatus } from "@/constants/enums/Person";
-import { EEntity, EHouse, EDepartment } from "@/constants/enums/App";
+import TABLE from "@/constants/TABLE";
+import {
+  ETitle,
+  EGender,
+  EMaritalStatus,
+  AgeGroup,
+} from "@/constants/enums/Person";
+import { NumberSeries, EMonthShort } from "@/constants/enums/Calendar";
+import { EEntity, EHouse, EDepartment } from "@/constants/enums/Lists";
 import EnumHelper from "@/utils/helpers/EnumHelper";
 import Styled, { styles } from "@/modules/Profile/Profile.module";
 import fakerHelper, { FakerHelper } from "@/lib/faker-js";
+import fakeMembers from "@/data/members";
+import * as firebaseMutation from "@/lib/firebase/firestore/mutations";
 
 export default function CreateMemberScreen() {
   const [submitting, setSubmitting] = React.useState(false);
+  async function handleSubmit() {
+    let data = fakeMembers[1];
+    setSubmitting(true);
+    const res = await firebaseMutation.create(TABLE.members, fakeMembers, "id");
+    setSubmitting(false);
+    console.log("🚀 ~ handleSubmit ~ res:", res);
+  }
 
   // fakerHelper.log(fakerHelper.getPeople);
   return (
@@ -39,11 +55,11 @@ export default function CreateMemberScreen() {
       <SafeAreaView>
         <Styled.Container>
           <Flex.CenterCenter>
-            <AvatarPhoto src={"/images/camera-alt.png"} size={80} />
+            <AvatarPhoto src={"/images/camera.png"} size={80} />
           </Flex.CenterCenter>
 
           <FormFieldset
-            // onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
             autoComplete="on"
             disabled={submitting}
           >
@@ -57,27 +73,30 @@ export default function CreateMemberScreen() {
                   required
                   options={EnumHelper.asOptions(EEntity)}
                 />
-                {/* TITLE */}
-                <FormSelect
-                  label="Title"
-                  id="title"
-                  name="title"
-                  options={EnumHelper.asOptions(ETitle)}
-                />
               </>
             )}
-            {/* SURNAME + OTHER NAMES */}
-            <Flex.CenterBetween $nowrap>
-              <div className="">
+
+            {M.members_create ? (
+              <FormInput
+                label="Full Name*"
+                type="search"
+                id="surname"
+                name="surname"
+                placeholder=".: Surname first"
+                required
+              />
+            ) : (
+              <>
+                {/* SURNAME */}
                 <FormInput
                   label="Surname*"
                   type="search"
                   id="surname"
                   name="surname"
+                  placeholder=".: Family name"
                   required
                 />
-              </div>
-              <div className="min-w-[60%]">
+                {/* OTHER NAMES */}
                 <FormInput
                   label="Other Names*"
                   type="search"
@@ -85,9 +104,10 @@ export default function CreateMemberScreen() {
                   name="other_names"
                   required
                 />
-              </div>
-            </Flex.CenterBetween>
-            {/* SEX + BIRTH DATE */}
+              </>
+            )}
+
+            {/* SEX + AGE RANGE */}
             <Flex.CenterBetween $nowrap>
               <div className="flex-1">
                 <FormSelect
@@ -98,12 +118,30 @@ export default function CreateMemberScreen() {
                 />
               </div>
               <div className="min-w-[50%]">
-                <FormInput
-                  label="Date of Birth"
-                  type="date"
+                <FormSelect
+                  label="Age Range"
+                  id="age_range"
+                  name="age_range"
+                  options={EnumHelper.asOptions(AgeGroup, false)}
+                />
+              </div>
+            </Flex.CenterBetween>
+            {/* BIRTH DATE */}
+            <Flex.CenterBetween $nowrap>
+              <div className="flex-1">
+                <FormSelect
+                  label="Day of Birth"
                   id="dob"
                   name="dob"
-                  placeholder="Surname first"
+                  options={NumberSeries()}
+                />
+              </div>
+              <div className="min-w-[50%]">
+                <FormSelect
+                  label="Month of Birth"
+                  id="mob"
+                  name="mob"
+                  options={EnumHelper.asOptions(EMonthShort)}
                 />
               </div>
             </Flex.CenterBetween>
@@ -126,6 +164,7 @@ export default function CreateMemberScreen() {
                 />
               </div>
             </Flex.CenterBetween>
+
             {!M.members_create && (
               <>
                 {/* PHONE NUMBERS */}
@@ -175,6 +214,7 @@ export default function CreateMemberScreen() {
               type="search"
               id="occupation"
               name="occupation"
+              placeholder="Ex. Fashion Designer"
             />
             {/* HOUSE + DEPT */}
             <Flex.CenterBetween $nowrap>
@@ -195,6 +235,7 @@ export default function CreateMemberScreen() {
                 />
               </div>
             </Flex.CenterBetween>
+
             {!M.members_create && (
               <>
                 {/* JOINED */}
@@ -209,7 +250,16 @@ export default function CreateMemberScreen() {
 
             <div className="mt-4 text-center">
               {/* BUTTON */}
-              <FormButton text="Save" disabled={submitting} />
+              {M.members_create ? (
+                <FormButton
+                  text="SAVE"
+                  type="button"
+                  onClick={handleSubmit}
+                  disabled={submitting}
+                />
+              ) : (
+                <FormButton text="Save" disabled={submitting} />
+              )}
 
               {/*  */}
               <Link

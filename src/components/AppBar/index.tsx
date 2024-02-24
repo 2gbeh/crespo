@@ -3,10 +3,11 @@ import { GoBell } from "react-icons/go";
 import { FaChevronLeft as BackIcon } from "react-icons/fa";
 import { CgMenuGridO as GridIcon } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "@/hooks/context/AuthContext";
 //
 import { Flex, SketchBox as Box } from "@/common/components";
 import Head from "../Head";
-import  AvatarPhoto  from "../Avatar/Photo";
+import { AvatarPhoto, AvatarSolid } from "../Avatar";
 import Badge from "../Badge";
 import Drawer from "../Drawer";
 import AppLauncher from "../AppLauncher";
@@ -14,9 +15,11 @@ import AppLauncher from "../AppLauncher";
 import PATH from "@/constants/PATH";
 import M from "@/constants/MOCK";
 import Styled, { styles } from "./AppBar.module";
+import { wrap } from "@/utils";
 
 const AppBar = ({ title, stack }: { title?: string; stack?: string }) => {
   const navigate = useNavigate();
+  const { auth: user } = React.useContext(AuthContext);
   const [showDrawer, setShowDrawer] = React.useState(Boolean(M.drawer));
   const [showAppLauncher, setShowAppLauncher] = React.useState(
     Boolean(M.app_launcher)
@@ -47,11 +50,18 @@ const AppBar = ({ title, stack }: { title?: string; stack?: string }) => {
               <Styled.ContentLeft>
                 <Flex.CenterStart as="figure">
                   <button onClick={() => setShowDrawer(true)} title="Drawer">
-                    <AvatarPhoto size={35} />
+                    {user && user.email ? (
+                      <AvatarSolid
+                        text={user.email as string}
+                        size={35}
+                      />
+                    ) : (
+                      <AvatarPhoto size={35} />
+                    )}
                   </button>
                   <figcaption>
                     <small>You're blessed,</small>
-                    <b>Sandra, E.</b>
+                    <b>{wrap(user?.email || "Anonymous", 18)}</b>
                   </figcaption>
                 </Flex.CenterStart>
               </Styled.ContentLeft>

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { FaCirclePlus as FabIcon } from "react-icons/fa6";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import DialogAlert from "./Dialog/Alert";
 //
 import COLOR from "@/constants/COLOR";
 import PATH from "@/constants/PATH";
@@ -21,27 +20,16 @@ const Container = styled.button`
 
 const FAB = () => {
   const navigate = useNavigate();
-  const [showDialog, setShowDialog] = React.useState(Boolean(M.capture));
   //
   return (
     <>
       <Container
         type="button"
-        // onClick={() => setShowDialog(true)}
         onClick={() => navigate(PATH.members_create)}
         aria-label="Capture"
       >
         <BsPlusCircleFill size={"3em"} color={COLOR.accent} />
       </Container>
-
-      {/* DIALOG */}
-      {showDialog && (
-        <DialogAlert
-          show={showDialog}
-          onClose={() => setShowDialog(false)}
-          onContinue={() => navigate(PATH.login)}
-        />
-      )}
     </>
   );
 };

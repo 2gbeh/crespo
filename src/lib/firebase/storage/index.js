@@ -1,28 +1,14 @@
-import { ref, getStorage, uploadBytes, getDownloadURL } from "firebase/storage";
-import firebaseConfig from "../config";
+import { app } from "../config";
+import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage";
+import { getUploadPath } from "./storage.service";
 
+// UPLOAD
 export async function upload(fileObject, storagePath = "") {
   return uploadBytes(
-    ref(getStorage(firebaseConfig), getUploadPath(fileObject, storagePath)),
+    ref(getStorage(app), getUploadPath(fileObject, storagePath)),
     fileObject
   ).then((snapshot) => getDownloadURL(snapshot.ref).then((url) => url));
 }
 
+// DELETE
 export async function remove(filePath) {}
-
-const getUploadPath = (fileObject, storagePath) => {
-  let [getFilePrefix, getFileExtension] = [
-    (fileType) =>
-      fileType.indexOf("/") > -1
-        ? fileType.split("/").shift().toUpperCase()
-        : "IMAGE",
-    (fileName) =>
-      fileName.indexOf(".") > -1 ? fileName.split(".").pop() : "png",
-  ];
-
-  return `
-    ${storagePath}/${getFilePrefix(fileObject.type)}_${Date.now()}.${getFileExtension(
-      fileObject.name
-    )}
-  `;
-};

@@ -6,9 +6,14 @@ import { Flex, Border } from "@/common/components";
 //
 import COLOR from "@/constants/COLOR";
 
-type TModal = { show?: boolean; onClose?: () => void; onContinue?: () => void };
+type TModal = {
+  show?: boolean;
+  onClose?: () => void;
+  onContinue?: () => void;
+  processing?: boolean;
+};
 
-const DialogAlert = ({ show, onClose, onContinue }: TModal) => {
+const DialogAlert = ({ show, onClose, onContinue, processing }: TModal) => {
   return (
     <Modal
       show={show}
@@ -29,11 +34,11 @@ const DialogAlert = ({ show, onClose, onContinue }: TModal) => {
           </p>
         </Flex.CenterCenter>
         <Flex.CenterEnd $gap={20}>
-          <button type="reset" onClick={onClose}>
+          <button type="reset" disabled={processing} onClick={onClose}>
             Cancel
           </button>
-          <button type="submit" onClick={onContinue}>
-            OK
+          <button type="submit" disabled={processing} onClick={onContinue}>
+            {processing ? "..." : "OK"}
           </button>
         </Flex.CenterEnd>
       </Styled.Container>

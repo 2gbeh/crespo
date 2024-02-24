@@ -1,12 +1,12 @@
-import { useLocation, Outlet, Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { Outlet } from "react-router-dom";
+import Intended from "@/components/Intended";
+import AuthContext from "@/hooks/context/AuthContext";
+// 
+import M from "@/constants/MOCK";
 
 export default function DashboardLayout() {
-  const location = useLocation();
-  const user = true;
+  const authContext = useContext(AuthContext);
   //
-  return user ? (
-    <Outlet />
-  ) : (
-    <Navigate to="/" state={{ intended: location.pathname }} replace />
-  );
+  return authContext.auth || M.auth ? <Outlet /> : <Intended />;
 }

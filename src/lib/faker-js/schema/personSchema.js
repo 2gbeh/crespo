@@ -16,8 +16,8 @@ export default {
   email: "email",
   address: "address",
   occupation: "occupation",
-  house: "number",
-  department: "number",
+  house: () => FakerHelper.number(1, 12),
+  department: () => FakerHelper.number(1, 20),
   joined: "date",
   created_at: "date",
 };

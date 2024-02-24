@@ -6,7 +6,7 @@ interface IFormSelect extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   placeholder?: string;
   // ["Male", ...] | [{value: 'm', option: 'Male' }, ...]
-  options?: string[] | Record<string, string | number>[];
+  options?: number[] | string[] | Record<string, string | number>[];
 }
 
 const FormSelect = ({

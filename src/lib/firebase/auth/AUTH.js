@@ -51,3 +51,13 @@ export const user = {
   apiKey: "AIzaSyCrSPfXwMBNF99CZrGnFRXbRRNljAp8GyA",
   appName: "[DEFAULT]",
 };
+
+// logout success
+export const logout = {
+  projectId: "119305697746",
+  authorizedDomains: [
+    "localhost",
+    "crespo-db.firebaseapp.com",
+    "crespo-db.web.app",
+  ],
+};
