@@ -1,4 +1,4 @@
-import { serverTimestamp } from "firebase/firestore";
+import { Timestamp, serverTimestamp } from "firebase/firestore";
 
 export const TIMESTAMPS = Object.freeze({
   created_at: "created_at",
@@ -24,6 +24,14 @@ export const QUERY_OPERATOR = Object.freeze({
   not_in: "not-in",
 });
 
+// 1970-01-20T18:40:14.521Z | { seconds: 1708889769, nanoseconds: 851000000 }
+export const datePipe = (dateProp) =>
+  dateProp?.seconds
+    ? new Date(dateProp.seconds * 1000).toJSON()
+    : dateProp.indexOf("-") >= 4
+      ? Timestamp.fromDate(new Date(dateProp))
+      : dateProp;
+
 export const getTimestamp = (as = 0) => ({
   [as == 1
     ? TIMESTAMPS.updated_at
@@ -33,7 +41,7 @@ export const getTimestamp = (as = 0) => ({
 });
 
 export function getTimestamps(as = 0) {
-  let [obj, now] = [
+  const [obj, now] = [
     {
       created_at: null,
       updated_at: null,
@@ -59,30 +67,3 @@ export function getTimestamps(as = 0) {
   //
   return obj;
 }
-
-// Firestore transformer
-class City {
-  constructor(name, state, country) {
-    this.name = name;
-    this.state = state;
-    this.country = country;
-  }
-  toString() {
-    return this.name + ", " + this.state + ", " + this.country;
-  }
-}
-
-// Firestore data converter
-const cityConverter = {
-  toFirestore: (city) => {
-    return {
-      name: city.name,
-      state: city.state,
-      country: city.country,
-    };
-  },
-  fromFirestore: (snapshot, options) => {
-    const data = snapshot.data(options);
-    return new City(data.name, data.state, data.country);
-  },
-};

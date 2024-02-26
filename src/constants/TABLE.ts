@@ -3,4 +3,5 @@ export default Object.freeze({
   events: "/events",
   members: "/members",
   transactions: "/transactions",
+  users: "/users",
 });

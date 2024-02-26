@@ -28,7 +28,10 @@ const Button = styled.button`
   margin-top: 20px;
   padding: 12px 10px;
   width: 100%;
-  font-size: 14px;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   display: block;
   &:hover {
     background: ${COLOR.brand_dark};

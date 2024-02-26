@@ -8,7 +8,7 @@ import {
   getAggregateFromServer,
   sum,
 } from "firebase/firestore";
-import { db } from "../config";
+import { db } from "../../config";
 
 export const getDocRef = (collection, documentId, collectionOnly = false) => {
   let dbCollection = db.collection(collection);
@@ -22,7 +22,7 @@ export async function getCount(collection, whereClause) {
   if (Array.isArray(whereClause) && whereClause.length === 3) {
     let [field, queryOperator, value] = whereClause;
     snapshot = await getCountFromServer(
-      query(docRef, where(field, queryOperator, value))
+      query(docRef, where(field, queryOperator, value)),
     );
   } else snapshot = await getCountFromServer(docRef);
   //
@@ -40,7 +40,7 @@ export async function getSum(collection, field, whereClause) {
     let [field, queryOperator, value] = whereClause;
     snapshot = await getAggregateFromServer(
       query(docRef, where(field, queryOperator, value)),
-      aggregateFn
+      aggregateFn,
     );
   } else snapshot = await getAggregateFromServer(docRef, aggregateFn);
   //
@@ -48,14 +48,18 @@ export async function getSum(collection, field, whereClause) {
 }
 
 // GET ALL DOCS
-export async function getAll(collection, orderBy = "createdAt") {
+export async function getAll(
+  collection,
+  orderBy = "createdAt",
+  primaryKey = "uuid",
+) {
   return getDocRef(collection, null, true)
     .orderBy(orderBy)
     .get()
     .then((querySnapshot) => {
       let data = [];
       querySnapshot.forEach((doc) =>
-        data.push({ ...doc.data(), [primaryKey]: doc.id })
+        data.push({ ...doc.data(), [primaryKey]: doc.id }),
       );
       return data;
     })
@@ -67,7 +71,7 @@ export async function getPaginated(
   collection,
   orderBy = "createdAt",
   limit = 10,
-  offset = 0
+  offset = 0,
 ) {
   return getDocRef(collection, null, true)
     .orderBy(orderBy)
@@ -81,7 +85,7 @@ export async function getPaginated(
       ];
       //
       querySnapshot.forEach((doc) =>
-        data.push({ ...doc.data(), [primaryKey]: doc.id })
+        data.push({ ...doc.data(), [primaryKey]: doc.id }),
       );
       return { data, meta: { offset } };
     })
@@ -97,7 +101,7 @@ export async function getRecent(collection, orderBy = "createdAt", limit = 10) {
     .then((querySnapshot) => {
       let data = [];
       querySnapshot.forEach((doc) =>
-        data.push({ ...doc.data(), [primaryKey]: doc.id })
+        data.push({ ...doc.data(), [primaryKey]: doc.id }),
       );
       return data;
     })
@@ -117,7 +121,7 @@ export function getById_Rt(collection, documentId) {
   let response = {};
   let unsubscribe = getDocRef(collection, documentId).onSnapshot(
     (doc) => (response = doc.data()),
-    (error) => (response = error)
+    (error) => (response = error),
   );
   //
   unsubscribe();
@@ -130,7 +134,7 @@ export async function getWhere(
   field,
   value,
   queryOperator = "==",
-  primaryKey = "uuid"
+  primaryKey = "uuid",
 ) {
   return getDocRef(collection, null, true)
     .where(field, queryOperator, value)
@@ -138,7 +142,7 @@ export async function getWhere(
     .then((querySnapshot) => {
       let data = [];
       querySnapshot.forEach((doc) =>
-        data.push({ ...doc.data(), [primaryKey]: doc.id })
+        data.push({ ...doc.data(), [primaryKey]: doc.id }),
       );
       return data;
     })
@@ -151,7 +155,7 @@ export function getWhere_Rt(
   field,
   value,
   queryOperator = "==",
-  documentIdAs = "uuid"
+  documentIdAs = "uuid",
 ) {
   let response = [];
   let unsubscribe = getDocRef(collection, null, true)
@@ -159,10 +163,10 @@ export function getWhere_Rt(
     .onSnapshot(
       (querySnapshot) => {
         querySnapshot.forEach((doc) =>
-          response.push({ ...doc.data(), [documentIdAs]: doc.id })
+          response.push({ ...doc.data(), [documentIdAs]: doc.id }),
         );
       },
-      (error) => (response = error)
+      (error) => (response = error),
     );
   //
   unsubscribe();
@@ -193,7 +197,7 @@ export async function update(
   collection,
   documentId,
   data,
-  hasUpdatedAt = true
+  hasUpdatedAt = true,
 ) {
   return getDocRef(collection, documentId)
     .update(hasUpdatedAt ? { ...data, updatedAt: serverTimestamp() } : data)
@@ -214,7 +218,7 @@ export async function save(collection, documentId, data, hasTimestamp = true) {
         : data,
       {
         merge: true,
-      }
+      },
     )
     .then(() => true)
     .catch((error) => error);
