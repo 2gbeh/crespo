@@ -34,17 +34,20 @@ import Styled, { styles } from "@/modules/Profile/Profile.module";
 import fakerHelper, { FakerHelper } from "@/lib/faker-js";
 import fakeMembers from "@/data/members";
 import * as firebaseMutation from "@/lib/firebase/firestore/mutations";
+import * as firebaseQuery from "@/lib/firebase/firestore/queries";
 
 export default function CreateMemberScreen() {
   const [submitting, setSubmitting] = React.useState(false);
   async function handleSubmit() {
     let data = fakeMembers[1];
     setSubmitting(true);
-    const res = await firebaseMutation.create(TABLE.members, fakeMembers, "id");
-    setSubmitting(false);
-    console.log("🚀 ~ handleSubmit ~ res:", res);
-  }
+    const res = await firebaseQuery.getPaginated(TABLE.users, 0, 2);
+    console.log("🚀 ~ handleSubmit ~ res:", JSON.stringify(res));
 
+    // const res2 = await firebaseQuery.getPaginated(TABLE.users, res?.meta?.offset, 2);
+    // console.log("🚀 ~ handleSubmit ~ res:", JSON.stringify(res2));
+    setSubmitting(false);
+  }
   // fakerHelper.log(fakerHelper.getPeople);
   return (
     <>
@@ -252,7 +255,7 @@ export default function CreateMemberScreen() {
               {/* BUTTON */}
               {M.members_create ? (
                 <FormButton
-                  text="SAVE"
+                  text="Save"
                   type="button"
                   onClick={handleSubmit}
                   disabled={submitting}
@@ -264,7 +267,7 @@ export default function CreateMemberScreen() {
               {/*  */}
               <Link
                 to={PATH.members}
-                className="mt-4 text-brand text-sm flex items-center justify-center gap-2 font-medium"
+                className="mt-4 flex items-center justify-center gap-2 text-sm font-medium text-brand"
               >
                 Members
                 <NextIcon size="1em" />

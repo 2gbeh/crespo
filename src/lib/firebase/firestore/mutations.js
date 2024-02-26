@@ -11,16 +11,16 @@ import { getTimestamps, getTimestamp } from "./firestore.service";
 
 // CREATE OR SEED
 // ('users', mockUser, 1) | ('users', mockUsers, 'id')
-export async function create(table, data, uuid_Pk) {
+export async function create(table, data, uuid_asPK) {
   try {
     let seed = Array.isArray(data);
     seed
       ? await Promise.all(
-          data.map((e, i) => setDoc(doc(db, table, e?.[uuid_Pk] || i), e))
+          data.map((e, i) => setDoc(doc(db, table, e?.[uuid_asPK] || i), e)),
         )
-      : await setDoc(doc(db, table, uuid_Pk), data);
+      : await setDoc(doc(db, table, uuid_asPK), data);
     //
-    return seed ? true : uuid_Pk;
+    return seed ? true : uuid_asPK;
   } catch (error) {
     return error;
   }
@@ -31,7 +31,7 @@ export async function add(table, data, addTimestamp = true) {
   try {
     const docRef = await addDoc(
       collection(db, table),
-      addTimestamp ? { ...data, ...getTimestamps() } : data
+      addTimestamp ? { ...data, ...getTimestamps() } : data,
     );
     return docRef.id;
   } catch (error) {
@@ -44,7 +44,7 @@ export async function update(table, data, uuid, addTimestamp = true) {
   try {
     await updateDoc(
       doc(db, table, uuid),
-      addTimestamp ? { ...data, ...getTimestamp(1) } : data
+      addTimestamp ? { ...data, ...getTimestamp(1) } : data,
     );
     return uuid;
   } catch (error) {
@@ -63,7 +63,7 @@ export async function save(table, data, uuid, addTimestamp = true) {
             ...getTimestamps(10),
           }
         : data,
-      { merge: true }
+      { merge: true },
     );
     return uuid;
   } catch (error) {

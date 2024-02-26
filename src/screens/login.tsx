@@ -65,7 +65,7 @@ export default function LoginScreen() {
           <Link to={PATH.forgot_password}>Forgot Password?</Link>
 
           {/* BUTTON */}
-          <FormButton text="Log in" disabled={submitting} />
+          <FormButton text="LOGIN" disabled={submitting} />
         </FormFieldset>
 
         {/* NAV */}
