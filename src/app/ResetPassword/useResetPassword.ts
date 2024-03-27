@@ -7,8 +7,8 @@ import { zzz } from "@/utils";
 
 export const initialFormData = M.auth
   ? {
-      password: "_Thatcrespob0y",
-      confirm_password: "_Thatcrespob0y",
+      password: "_Thatzentryb0y",
+      confirm_password: "_Thatzentryb0y",
     }
   : {
       password: "",

@@ -23,6 +23,6 @@ export type TRegisterSchema = z.infer<typeof registerSchema>;
 export const initialFormData = {
   name: "Tugbeh Emmanuel Osaretin",
   email: "etugbeh@outlook.com",
-  password: "_Thatcrespodbb0y",
-  confirm_password: "_Thatcrespodbb0y",
+  password: "_Thatzentrydbb0y",
+  confirm_password: "_Thatzentrydbb0y",
 };
