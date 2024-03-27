@@ -83,19 +83,19 @@
   ],
   "screenshots": [
     {
-      "src": "/images/ui-splash.png",
+      "src": "/ui/splash.png",
       "type": "image/png",
       "sizes": "356x634",
       "label": "Welcome"
     },
     {
-      "src": "/images/ui-login.png",
+      "src": "/ui/login.png",
       "type": "image/png",
       "sizes": "356x634",
       "label": "Login"
     },
     {
-      "src": "/images/ui-dashboard.png",
+      "src": "/ui/dashboard.png",
       "type": "image/png",
       "sizes": "356x634",
       "label": "Home"

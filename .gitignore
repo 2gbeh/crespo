@@ -27,5 +27,5 @@ dist-ssr
 .contentlayer
 
 #
-_exclude
+.ignore
 .env

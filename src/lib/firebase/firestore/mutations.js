@@ -1,4 +1,4 @@
-import { db } from "../config";
+import { db } from "..";
 import {
   collection,
   doc,
@@ -7,7 +7,11 @@ import {
   updateDoc,
   deleteDoc,
 } from "firebase/firestore";
-import { getTimestamps, getTimestamp } from "./firestore.service";
+import {
+  firestorePipe,
+  getTimestamps,
+  getTimestamp,
+} from "./firestore.service";
 
 // CREATE OR SEED
 // ('users', mockUser, 1) | ('users', mockUsers, 'id')
@@ -20,9 +24,9 @@ export async function create(table, data, uuid_asPK) {
         )
       : await setDoc(doc(db, table, uuid_asPK), data);
     //
-    return seed ? true : uuid_asPK;
+    return firestorePipe(seed ? true : uuid_asPK);
   } catch (error) {
-    return error;
+    return firestorePipe(error);
   }
 }
 
@@ -33,9 +37,9 @@ export async function add(table, data, addTimestamp = true) {
       collection(db, table),
       addTimestamp ? { ...data, ...getTimestamps() } : data,
     );
-    return docRef.id;
+    return firestorePipe(docRef.id);
   } catch (error) {
-    return error;
+    return firestorePipe(error);
   }
 }
 
@@ -46,9 +50,9 @@ export async function update(table, data, uuid, addTimestamp = true) {
       doc(db, table, uuid),
       addTimestamp ? { ...data, ...getTimestamp(1) } : data,
     );
-    return uuid;
+    return firestorePipe(uuid);
   } catch (error) {
-    return error;
+    return firestorePipe(error);
   }
 }
 
@@ -65,9 +69,9 @@ export async function save(table, data, uuid, addTimestamp = true) {
         : data,
       { merge: true },
     );
-    return uuid;
+    return firestorePipe(uuid);
   } catch (error) {
-    return error;
+    return firestorePipe(error);
   }
 }
 
@@ -78,8 +82,8 @@ export async function remove(table, uuid, softDelete = true) {
       ? await updateDoc(doc(db, table, uuid), getTimestamp(2))
       : await deleteDoc(doc(db, table, uuid));
     //
-    return uuid;
+    return firestorePipe(uuid);
   } catch (error) {
-    return error;
+    return firestorePipe(error);
   }
 }

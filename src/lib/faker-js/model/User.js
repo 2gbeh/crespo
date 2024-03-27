@@ -5,7 +5,7 @@ import FakerDate from "./Date";
 export default class FakerUser extends FakerDate {
   // https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/315.jpg
   get avatar() {
-    return faker.internet.avatar();
+    return faker.image.avatar();
   }
   // ////////////////////////////////////////////////////////////
 

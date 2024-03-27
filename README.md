@@ -1,30 +1,27 @@
-# React + TypeScript + Vite
+# CRESPO
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Internal Database Web App - Corel Ministry Int'l
 
-Currently, two official plugins are available:
+[![React](https://img.shields.io/badge/React-18.x-087ea4.svg)](https://legacy.reactjs.org/docs/getting-started.html)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/docs/)
+[![Firebase](https://img.shields.io/badge/Firebase-10.x-ffcb2c.svg)](hhttps://console.firebase.google.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
 
-## Expanding the ESLint configuration
+```
+$ git clone https://github.com/2gbeh/crespo.git
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+$ cd crespo
 
-- Configure the top-level `parserOptions` property like this:
+$ npm install
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+$ npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Usage
+
+> Local:   http://localhost:5173/
+
+## Documentation
+
+![Screenshot](./public/social-preview.png)

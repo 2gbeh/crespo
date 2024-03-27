@@ -12,14 +12,14 @@ type TFormattedObject = {
 export default class EnumHelper {
   static keyOf = (E: object, value: TValue) => {
     let obj = this.asObject(E).find(
-      (e) => e.value.toString().search(new RegExp(value.toString(), "i")) > -1
+      (e) => e.value.toString().search(new RegExp(value.toString(), "i")) > -1,
     );
     return obj ? obj.key : null;
   };
 
   static valueOf = (E: object, key: string): TValue | null => {
     let obj = this.asObject(E).find(
-      (e) => e.key.search(new RegExp(key, "i")) > -1
+      (e) => e.key.search(new RegExp(key, "i")) > -1,
     );
     return obj ? obj.value : null;
   };
@@ -53,6 +53,8 @@ export default class EnumHelper {
         : {
             value: e.key,
             option: e.value,
-          }
+          },
     );
 }
+
+console.log(EnumHelper.asArray({ name: "John" }));

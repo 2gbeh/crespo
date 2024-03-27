@@ -1,4 +1,4 @@
-import { FakerHelper } from "../index";
+import { FakerHelper } from "../main";
 
 export default {
   id: 1,
@@ -23,7 +23,13 @@ export default {
   },
   status: () =>
     FakerHelper.in(
-      Object.keys(["Default", "Verified", "Onboarded", "Priority", "Watchlist"])
+      Object.keys([
+        "Default",
+        "Verified",
+        "Onboarded",
+        "Priority",
+        "Watchlist",
+      ]),
     ),
   created_at: "date",
   updated_at: null,

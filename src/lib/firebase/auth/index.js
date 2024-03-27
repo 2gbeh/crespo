@@ -3,7 +3,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { auth } from "../config";
+import { auth } from "..";
 import { authPipe } from "./auth.service";
 
 // SIGN UP

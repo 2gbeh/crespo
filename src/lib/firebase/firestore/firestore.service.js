@@ -24,6 +24,22 @@ export const QUERY_OPERATOR = Object.freeze({
   not_in: "not-in",
 });
 
+export const firestorePipe = (response) => {
+  if (response.toString().startsWith("FirebaseError")) {
+    return {
+      status: 400,
+      statusText: "BAD_REQUEST",
+      message: response,
+    };
+  } else {
+    return {
+      status: 200,
+      statusText: "OK",
+      data: response,
+    };
+  }
+};
+
 // 1970-01-20T18:40:14.521Z | { seconds: 1708889769, nanoseconds: 851000000 }
 export const datePipe = (dateProp) =>
   dateProp?.seconds

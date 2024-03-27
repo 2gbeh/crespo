@@ -1,4 +1,4 @@
-import { FakerHelper } from "../index";
+import { FakerHelper } from "../main";
 
 export default {
   id: 1,
@@ -11,8 +11,8 @@ export default {
   brand: {
     logo: "logo",
     name: "company",
-    city: 'state',
-    country: 'countryCode',
+    city: "state",
+    country: "countryCode",
     website: "website",
   },
   summary: "description",
