@@ -12,7 +12,7 @@ import M from "@/constants/MOCK";
 export const initialFormData = M.auth
   ? {
       username: "tugbeh.osaretin@gmail.com",
-      password: "_Thatcrespob0y",
+      password: "_Thatzentryb0y",
     }
   : {
       username: "",
@@ -36,7 +36,7 @@ export default function useLogin(formData: Record<string, string>) {
     } else {
       const res = await firebaseAuth.login(
         formData.username,
-        formData.password
+        formData.password,
       );
       setSubmitting(false);
       console.log("🚀 ~ handleSubmit ~ res:", res);

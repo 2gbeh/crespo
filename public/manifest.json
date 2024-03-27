@@ -1,12 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "CRESPO",
-  "short_name": "CRESPO",
+  "name": "ZEntry",
+  "short_name": "ZEntry",
   "description": "Internal database web app for Jubilee Chapel HQ, Corel Ministry Int'l Inc.",
   "categories": [
-    "crespo",
-    "crespo db",
-    "crespo app",
+    "zentry",
+    "zentry db",
+    "zentry app",
     "jubilee chapel",
     "corel ministry",
     "tony tobore",

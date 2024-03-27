@@ -1,4 +1,4 @@
-# CRESPO
+# ZEntry
 
 Internal Database Web App - Corel Ministry Int'l
 
@@ -9,9 +9,9 @@ Internal Database Web App - Corel Ministry Int'l
 ## Installation
 
 ```
-$ git clone https://github.com/2gbeh/crespo.git
+$ git clone https://github.com/2gbeh/zentry.git
 
-$ cd crespo
+$ cd zentry
 
 $ npm install
 
@@ -20,7 +20,7 @@ $ npm run dev
 
 ## Usage
 
-> Local:   http://localhost:5173/
+> Local: http://localhost:5173/
 
 ## Documentation
 
