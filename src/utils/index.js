@@ -56,8 +56,10 @@ export const pad = (str, x = 3, y = "0") =>
       : str;
 
 // await zzz() - mock api request delay
-export const zzz = (secs = 3) =>
-  new Promise((resolve) => setTimeout(resolve, secs * 1000));
+export const zzz = (secs = 3, success = true) =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve({ status: success ? 200 : 400 }), secs * 1000),
+  );
 
 // text transform uppercase
 export const caps = (str) =>
@@ -91,7 +93,7 @@ export const wrap = (x, len = 160) => {
 export const live = window?.navigator?.onLine;
 
 // case-insensitive string search
-export const ifind = (str, substr) =>
+export const iMatch = (str, substr) =>
   str.toString().search(new RegExp(substr.toString(), "i")) > -1;
 
 // is defined or replace

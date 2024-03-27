@@ -8,7 +8,7 @@ import {
   getAggregateFromServer,
   sum,
 } from "firebase/firestore";
-import { db } from "../../config";
+import { db } from "..";
 
 export const getDocRef = (collection, documentId, collectionOnly = false) => {
   let dbCollection = db.collection(collection);

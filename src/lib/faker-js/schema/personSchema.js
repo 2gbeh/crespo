@@ -1,4 +1,4 @@
-import { FakerHelper } from "../index";
+import { FakerHelper } from "../main";
 
 export default {
   id: 1,

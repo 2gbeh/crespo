@@ -1,26 +1,26 @@
-export const authPipe = (res) => {
-  if (res?.code) {
+export const authPipe = (response) => {
+  if (response?.code) {
     return {
       "auth/network-request-failed": {
-        errno: 400,
-        error: "BAD_REQUEST",
-        data: {},
+        status: 400,
+        statusText: "BAD_REQUEST",
+        message: response.code,
       },
       "auth/invalid-email": {
-        errno: 422,
-        error: "UNPROCESSABLE_CONTENT",
-        data: {},
+        status: 422,
+        statusText: "UNPROCESSABLE_CONTENT",
+        message: response.code,
       },
       "auth/invalid-login-credentials": {
-        errno: 404,
-        error: "NOT_FOUND",
-        data: {},
+        status: 404,
+        statusText: "NOT_FOUND",
+        message: response.code,
       },
-    }[res.code];
+    }[response.code];
   }
   return {
-    errno: 200,
-    error: "OK",
-    data: res,
+    status: 200,
+    statusText: "OK",
+    data: response,
   };
 };

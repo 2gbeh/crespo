@@ -1,4 +1,4 @@
-import { app } from "../config";
+import { app } from "..";
 import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage";
 import { getUploadPath } from "./storage.service";
 
@@ -6,7 +6,7 @@ import { getUploadPath } from "./storage.service";
 export async function upload(fileObject, storagePath = "") {
   return uploadBytes(
     ref(getStorage(app), getUploadPath(fileObject, storagePath)),
-    fileObject
+    fileObject,
   ).then((snapshot) => getDownloadURL(snapshot.ref).then((url) => url));
 }
 

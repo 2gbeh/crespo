@@ -6,38 +6,9 @@
 import { faker } from "@faker-js/faker";
 import Seeders from "./Seeders";
 
-// import fakerHelper, { FakerHelper } from "lib/faker-js";
+// import fakerHelper from "lib/faker-js/main";
+// fakerHelper.log(fakerHelper.getEvents);
 export class FakerHelper extends Seeders {
-  log(args) {
-    // console.clear();
-    console.log(JSON.stringify(args));
-  }
-  factory(schema, size = 10, asObject = false) {
-    let [arr, obj] = [[], {}];
-    for (let i = 0; i < size; i++) {
-      Object.entries(schema).map(([key, callback]) => {
-        let value;
-        switch (typeof callback) {
-          case "string":
-            value =
-              callback.charAt(0) === "#" ? callback.slice(1) : this[callback];
-            break;
-          case "object":
-            value = callback ? this.factory(callback, 1).pop() : null;
-            break;
-          case "function":
-            value = callback();
-            break;
-          default:
-            value = callback;
-        }
-        obj[key] = value;
-      });
-      arr.push(obj);
-      obj = {};
-    }
-    return asObject ? arr.pop() : arr;
-  }
   // 0 - 9
   static number = (min = 0, max = 9) =>
     parseInt(faker.commerce.price({ min, max, dec: 0 }));
@@ -64,12 +35,12 @@ export class FakerHelper extends Seeders {
   // random element in array/csv
   static in = (arrOrCsv, delimiter = ",") =>
     faker.string.fromCharacters(
-      typeof arrOrCsv === "string" ? arrOrCsv.split(delimiter) : arrOrCsv
+      typeof arrOrCsv === "string" ? arrOrCsv.split(delimiter) : arrOrCsv,
     );
   // random key/value in enum
   static inEnum = (arrOrObj, inKeys = true) =>
     faker.string.fromCharacters(
-      inKeys ? Object.keys(arrOrObj) : Object.values(arrOrObj)
+      inKeys ? Object.keys(arrOrObj) : Object.values(arrOrObj),
     );
 }
 

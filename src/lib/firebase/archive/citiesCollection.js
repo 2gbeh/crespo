@@ -1,4 +1,4 @@
-import { db } from "../../config";
+import { db } from "..";
 import { doc, getDoc } from "firebase/firestore";
 
 const city = {

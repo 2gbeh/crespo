@@ -1,4 +1,4 @@
-import { db } from "../config";
+import { db } from "..";
 import {
   doc,
   getDoc,
@@ -15,6 +15,7 @@ import {
   sum,
   average,
 } from "firebase/firestore";
+import { firestorePipe } from "./firestore.service";
 
 // COUNT
 // Ex. whereClause => ["sex", "==", 1]
@@ -24,9 +25,9 @@ export async function getCount(table, whereClause) {
     const snapshot = whereClause
       ? await getCountFromServer(query(docRef, where(...whereClause)))
       : await getCountFromServer(docRef);
-    return snapshot.data().count;
+    return firestorePipe(snapshot.data().count);
   } catch (error) {
-    return error;
+    return firestorePipe(error);
   }
 }
 
@@ -42,9 +43,9 @@ export async function getSum(table, column, whereClause) {
           sumFunc,
         )
       : await getAggregateFromServer(docRef, sumFunc);
-    return snapshot.data().computed;
+    return firestorePipe(snapshot.data().computed);
   } catch (error) {
-    return error;
+    return firestorePipe(error);
   }
 }
 
@@ -60,9 +61,9 @@ export async function getAverage(table, column, whereClause) {
           sumFunc,
         )
       : await getAggregateFromServer(docRef, sumFunc);
-    return snapshot.data().computed;
+    return firestorePipe(snapshot.data().computed);
   } catch (error) {
-    return error;
+    return firestorePipe(error);
   }
 }
 
@@ -76,10 +77,32 @@ export async function getAll(table, sortBy = "created_at", asPK = "uuid") {
     querySnapshot.forEach((doc) =>
       data.push({ ...doc.data(), [asPK]: doc.id }),
     );
-    return data;
+    return firestorePipe(data);
   } catch (error) {
-    return error;
+    return firestorePipe(error);
   }
+}
+
+// BY ID
+export async function getById(table, uuid) {
+  try {
+    const docSnap = await getDoc(doc(db, table, uuid));
+    return firestorePipe(docSnap.exists() ? docSnap.data() : {});
+  } catch (error) {
+    return firestorePipe(error);
+  }
+}
+
+// BY ID (REAL-TIME)
+export async function getById_Rt(table, uuid) {
+  const obj = { data: {}, error: null };
+  const unsubscribe = onSnapshot(
+    doc(db, table, uuid),
+    (doc) => (obj.data = doc.data()),
+    (error) => (obj.error = error),
+  );
+  //
+  return firestorePipe(obj.error || { data: obj.data, meta: { unsubscribe } });
 }
 
 // GET, WHERE
@@ -98,9 +121,9 @@ export async function getSome(
     querySnapshot.forEach((doc) =>
       data.push({ ...doc.data(), [asPK]: doc.id }),
     );
-    return data;
+    return firestorePipe(data);
   } catch (error) {
-    return error;
+    return firestorePipe(error);
   }
 }
 
@@ -112,40 +135,18 @@ export async function getSome_Rt(
   queryOperator = "==",
   asPK = "uuid",
 ) {
-  const response = { data: [], error: "" };
+  const obj = { data: [], error: null };
   const unsubscribe = onSnapshot(
     query(collection(db, table), where(field, queryOperator, value)),
     (querySnapshot) => {
       querySnapshot.forEach((doc) =>
-        response.data.push({ ...doc.data(), [asPK]: doc.id }),
+        obj.data.push({ ...doc.data(), [asPK]: doc.id }),
       );
     },
-    (error) => (response.error = error),
+    (error) => (obj.error = error),
   );
   //
-  return { ...response, unsubscribe };
-}
-
-// BY ID
-export async function getById(table, uuid) {
-  try {
-    const docSnap = await getDoc(doc(db, table, uuid));
-    return docSnap.exists() && docSnap.data();
-  } catch (error) {
-    return error;
-  }
-}
-
-// BY ID (REAL-TIME)
-export async function getById_Rt(table, uuid) {
-  const response = { data: {}, error: "" };
-  const unsubscribe = onSnapshot(
-    doc(db, table, uuid),
-    (doc) => (response.data = doc.data()),
-    (error) => (response.error = error),
-  );
-  //
-  return { ...response, unsubscribe };
+  return firestorePipe(obj.error || { data: obj.data, meta: { unsubscribe } });
 }
 
 // PAGINATED
@@ -170,12 +171,12 @@ export async function getPaginated(
     querySnapshot.forEach((doc) =>
       data.push({ ...doc.data(), [asPK]: doc.id }),
     );
-    return {
+    return firestorePipe({
       data,
       meta: { offset: querySnapshot.docs[querySnapshot.docs.length - 1] },
-    };
+    });
   } catch (error) {
-    return error;
+    return firestorePipe(error);
   }
 }
 
@@ -194,8 +195,8 @@ export async function getRecent(
     querySnapshot.forEach((doc) =>
       data.push({ ...doc.data(), [asPK]: doc.id }),
     );
-    return data;
+    return firestorePipe(data);
   } catch (error) {
-    return error;
+    return firestorePipe(error);
   }
 }

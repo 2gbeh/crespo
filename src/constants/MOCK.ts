@@ -14,6 +14,7 @@ export default Object.freeze({
   profile: 1,
   capture: 0,
   members: 1,
-  members_create: 1,
+  members_create: 0,
   finances: 0,
+  test_register: 1,
 });

@@ -1,6 +1,6 @@
 "use strict";
 import { faker } from "@faker-js/faker";
-import { FakerHelper as Super } from "../";
+import { FakerHelper as Super } from "../main";
 import FakerUser from "./User";
 
 export default class FakerPost extends FakerUser {
