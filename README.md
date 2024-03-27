@@ -6,6 +6,8 @@ Internal Database Web App - Corel Ministry Int'l
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/docs/)
 [![Firebase](https://img.shields.io/badge/Firebase-10.x-ffcb2c.svg)](hhttps://console.firebase.google.com/)
 
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+
 ## Installation
 
 ```
